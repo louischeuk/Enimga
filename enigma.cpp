@@ -16,7 +16,8 @@ Enigma::Enigma(int argc, char** argv) {
 
 void Enigma::check_config(int argc, char **argv) {
 	if (argc == 1) {
-	 code = INSUFFICIENT_NUMBER_OF_PARAMETERS;
+		cerr << "usage: enigma plugboard-file reflector-file (<rotor-file>)* rotor-positions" << endl;
+		code = INSUFFICIENT_NUMBER_OF_PARAMETERS;
 	} else {
 		plugboard = new Plugboard(argv[1]);
 		plugboard->check_config(argv[1]);
@@ -25,6 +26,7 @@ void Enigma::check_config(int argc, char **argv) {
 //			cout << "plugboad config ok" << endl;
 
 			if (argc == 2) {
+				cerr << "usage: enigma plugboard-file reflector-file (<rotor-file>)* rotor-positions" << endl;
 				code = INSUFFICIENT_NUMBER_OF_PARAMETERS;
 			} else {
 				reflector = new Reflector(argv[2]);
@@ -34,6 +36,7 @@ void Enigma::check_config(int argc, char **argv) {
 //					cout << "Reflector config ok " << endl;
 
 					if (argc == 3) {
+						cerr << "usage: enigma plugboard-file reflector-file (<rotor-file>)* rotor-positions" << endl;
 						code = INSUFFICIENT_NUMBER_OF_PARAMETERS;
 					} else if (argc >= 4) {
 //						cout << "argc is >= 4" << endl;

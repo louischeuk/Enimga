@@ -28,20 +28,21 @@ void Rotor::check_config(const char* filename) {
 		map<string, int> rotor_map; // store the existed numbers
 
 		for (int i=0 ; (i<26) && (code == NO_ERROR) ; i++) { // check the first 26 alphabets index
-			if (!(in >> input))
+			if (!(in >> input)) {
+				cerr << "Not all inputs mapped in rotor file: " << filename << endl;
 				code = INVALID_ROTOR_MAPPING;
-			else {
-				if (is_repeated_in_map(input, rotor_map))
+			} else {
+				if (is_repeated_in_map(input, rotor_map)) {
+					cerr << "Not all inputs mapped in rotor file: " << filename << endl;
 					code = INVALID_ROTOR_MAPPING;
-				else {
+				} else {
 					rotor_map.insert(pair<string,int>(input, i));
 
 					if (!is_index_valid(input))
 						code = INVALID_INDEX;
-					else if (!is_numeric(input))
+					else if (!is_numeric(input)) {
+						cerr << "Non-numeric character for mapping in rotor file " << filename << endl;
 						code = NON_NUMERIC_CHARACTER;
-					else {
-//						cout << "alphabet" << input << endl;
 					}
 				}
 			}
@@ -56,7 +57,7 @@ void Rotor::check_config(const char* filename) {
 				else if (!is_numeric(input))
 					code = NON_NUMERIC_CHARACTER;
 				else {
-					int input_number = stoi(input);
+					int input_number = string_to_int(input);
 					if (is_repeated(i, input_number, temp_notch_pos))
 						code = INVALID_ROTOR_MAPPING;
 					else {
@@ -153,7 +154,7 @@ int set_starting_pos(Rotor **rotor, int number_of_rotors, const char *filename) 
 	string input;
 	for (int i=0; i < number_of_rotors; i++) {
 		if (!(in >> input)) {
-			cerr << "No starting position for rotor " << i << " in rotor position file: " << filename << endl;
+			cerr << "No starting position for rotor " << i << " in rotor position file " << filename << endl;
 			return NO_ROTOR_STARTING_POSITION;
 		}
 		if (!is_numeric(input)) {

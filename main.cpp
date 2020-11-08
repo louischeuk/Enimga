@@ -58,7 +58,6 @@ int main(int argc, char** argv) {
                 cerr << "Invalid index!" << endl;
                 return INVALID_INDEX;
             case 4:
-                cerr << "Non numeric character!" << endl;
                 return NON_NUMERIC_CHARACTER;
             case 5:
                 cerr << "Impossible plugboad configuration!" << endl;
