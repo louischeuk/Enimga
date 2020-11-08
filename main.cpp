@@ -99,7 +99,7 @@ int main(int argc, char** argv) {
 
     for (string::iterator letter = letters.begin(); letter < letters.end(); letter++) {
         if (*letter < 65 || *letter > 90) {
-            cerr << "Invalid input character. Only accept uppercase letter." << endl;
+            cerr << *letter << " is not a valid input character (input characters must be upper case letters A-Z)!" << endl;
             return INVALID_INPUT_CHARACTER;
         }
         letter_int = *letter - 65;

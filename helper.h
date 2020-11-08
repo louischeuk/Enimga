@@ -2,6 +2,7 @@
 #define HELPER_H
 
 #include <iostream>
+#include <sstream>
 #include <fstream>
 #include <string>
 #include <map>
@@ -19,5 +20,7 @@ bool is_repeated_in_map(const string &key, const map<string,int> &map);
 bool is_repeated(const int n, const int number, const int map[]);
 
 int mod(const int &number);
+
+int string_to_int(const string &string);
 
 #endif

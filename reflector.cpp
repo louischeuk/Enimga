@@ -79,9 +79,9 @@ void Reflector::implement_config(const char *filename) {
 		string input;
 		int input_number_1, input_number_2;
 		while (in_2 >> input) {
-			input_number_1 = stoi(input);
+			input_number_1 = string_to_int(input);
 			in_2 >> input;
-			input_number_2 = stoi(input);
+			input_number_2 = string_to_int(input);
 			alphabet_map[input_number_1] = input_number_2; // swap the pair
 			alphabet_map[input_number_2] = input_number_1;
 		}

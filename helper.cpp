@@ -38,3 +38,11 @@ bool is_repeated(const int n, const int number, const int map[]) {
 int mod(const int &number) {
 	return (number + 26) % 26;
 }
+
+int string_to_int(const string &string) {
+    int number;
+    stringstream converter(string);
+    converter >> number;
+    
+    return number;
+}
