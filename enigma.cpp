@@ -100,7 +100,6 @@ int Enigma::encrypt(const int &letter) {
 
 	if (number_of_rotor > 0) { 	// when a letter is pressed, the rightmost rotor rotates
 		rotor[number_of_rotor - 1]->rotate();
-
 		for (int i = number_of_rotor-1 ; i>0; i--) {
 			for (int j=0; j < (rotor[i]->number_of_notch) ; j++) { // iterator every notches
 				if ( rotor[i]->top_pos == rotor[i]->notch_pos[j])
