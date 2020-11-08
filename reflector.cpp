@@ -5,12 +5,10 @@ Reflector::Reflector(const char* filename) {
 
 	code = NO_ERROR;
 
-	// initialise 0-25 which corrospends to A-Z to the mapping
 	for (int i=0; i < 26; i++)
 		this->alphabet_map[i] = i;
 
 //	cout << "reflector initialised with config file: " << filename << endl;
-
 }
 
 void Reflector::check_config(const char *filename) {

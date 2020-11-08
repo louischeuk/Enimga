@@ -30,7 +30,6 @@ public:
 	int map_l_to_r(const int &letter);
 	void rotate();
 	friend int set_starting_pos(Rotor **rotor, int number_of_rotors, const char *filename); // number_of_rotors is from the enimga class,
-	~Rotor();
 };
 
 #endif

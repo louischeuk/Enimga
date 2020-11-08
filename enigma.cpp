@@ -66,9 +66,9 @@ void Enigma::check_config(int argc, char **argv) {
 //							cout << "set starting position ok" << endl;
 
 //							cout << argc - 4 << " rotor(s) config using: " << endl; // how many rotors
-							for (int i=3; i <= argc - 2; i++ ) {
-								cout << argv[i] << endl;
-							}
+							// for (int i=3; i <= argc - 2; i++ ) {
+							// 	cout << argv[i] << endl;
+							// }
 //							cout << "Their position are configured using " << argv[argc-1] << endl; // position
 						}
 					}

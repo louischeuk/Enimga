@@ -169,8 +169,3 @@ int set_starting_pos(Rotor **rotor, int number_of_rotors, const char *filename) 
 	}
 	return NO_ERROR;
 }
-
-/* destructor */
-Rotor::~Rotor() {
-	// delete [] notch_pos;
-}

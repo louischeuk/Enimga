@@ -61,9 +61,6 @@ void Plugboard::check_config(const char* filename) {
 				}
 			}
 		}
-		// if (count %2 != 0)
-		// 	code = IMPOSSIBLE_PLUGBOARD_CONFIGURATION;
-//		cout << "count is " << count << endl;
 	}
 	in.close();
 }
