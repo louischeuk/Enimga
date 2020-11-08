@@ -70,7 +70,6 @@ int main(int argc, char** argv) {
                 cerr << "Invalid rotor mapping!" << endl;
                 return INVALID_ROTOR_MAPPING;
             case 8:
-                cerr << "No rotor starting position!" << endl;
                 return NO_ROTOR_STARTING_POSITION;
             case 9:
                 cerr << "Invalid reflector mapping!" << endl;
