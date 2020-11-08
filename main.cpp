@@ -3,9 +3,9 @@
 #include <fstream>
 #include <map>
 #include "enigma.h"
-#include "reflector.h"
-#include "rotor.h"
-#include "plugboard.h"
+// #include "reflector.h"
+// #include "rotor.h"
+// #include "plugboard.h"
 #include "helper.h"
 #include "errors.h"
 
@@ -49,7 +49,6 @@ int main(int argc, char** argv) {
     if (enigma.code != NO_ERROR) {
         switch(enigma.code) {
             case 1:
-                cerr << "Insufficient number of parameters!" << endl;
                 return INSUFFICIENT_NUMBER_OF_PARAMETERS;
             case 2:
                 cerr << "Invalid input character" << endl;
@@ -60,7 +59,6 @@ int main(int argc, char** argv) {
             case 4:
                 return NON_NUMERIC_CHARACTER;
             case 5:
-                cerr << "Impossible plugboad configuration!" << endl;
                 return IMPOSSIBLE_PLUGBOARD_CONFIGURATION;
             case 6:
                 cerr << "Incorrect number of plugboard parameters!" << endl;

@@ -8,6 +8,7 @@
 #include "reflector.h"
 #include "helper.h"
 
+// class Rotor;
 
 class Enigma {
 	Plugboard *plugboard;
