@@ -151,22 +151,21 @@ int set_starting_pos(Rotor **rotor, int number_of_rotors, const char *filename) 
 
 	if (in.fail())
 		return ERROR_OPENING_CONFIGURATION_FILE;
-	else {
-		string input;
-		for (int i=0; i < number_of_rotors; i++) {
-			if (!(in >> input)) {
-				cerr << "No starting position for rotor " << i << " in rotor position file: " << filename << endl;
-				return NO_ROTOR_STARTING_POSITION;
-			}
-			if (!is_numeric(input)) {
-				cerr << "Non-numeric character in rotor positions file " << filename << endl;
-				return NON_NUMERIC_CHARACTER;
-			}
-			if (!is_index_valid(input))
-				return INVALID_INDEX;
 
-			rotor[i]->top_pos = string_to_int(input);
+	string input;
+	for (int i=0; i < number_of_rotors; i++) {
+		if (!(in >> input)) {
+			cerr << "No starting position for rotor " << i << " in rotor position file: " << filename << endl;
+			return NO_ROTOR_STARTING_POSITION;
 		}
-		return NO_ERROR;
+		if (!is_numeric(input)) {
+			cerr << "Non-numeric character in rotor positions file " << filename << endl;
+			return NON_NUMERIC_CHARACTER;
+		}
+		if (!is_index_valid(input))
+			return INVALID_INDEX;
+
+		rotor[i]->top_pos = string_to_int(input);
 	}
+	return NO_ERROR;
 }

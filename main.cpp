@@ -81,8 +81,6 @@ int main(int argc, char** argv) {
 //        cout << "enigma can be used." << endl;
     }
 
-
-    /* start inputting letters */
 //    cout << "Input any uppercase letter (A-Z) for encryption: ";
     string letters;
     int letter_int;
