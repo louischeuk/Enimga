@@ -41,10 +41,10 @@ void Reflector::check_config(const char *filename) {
 					code = INCORRECT_NUMBER_OF_PLUGBOARD_PARAMETERS;
 				else if (!is_index_valid(input))
 					code = INVALID_INDEX;
-				else if (!is_numeric(input))
+				else if (!is_numeric(input)) {
+					cerr << "Non-numeric character in reflector file " << filename << endl;
 					code = NON_NUMERIC_CHARACTER;
-				else {
-
+				} else {
 					if (!(in >> input)) {
 						cerr << "Incorrect (odd) number of parameters in reflector file " << filename << endl;
 						code = IMPOSSIBLE_PLUGBOARD_CONFIGURATION;
@@ -57,8 +57,10 @@ void Reflector::check_config(const char *filename) {
 
 							if (!is_index_valid(input))
 								code = INVALID_INDEX;
-							else if (!is_numeric(input))
+							else if (!is_numeric(input)) {
+								cerr << "Non-numeric character in reflector file " << filename << endl;
 								code = NON_NUMERIC_CHARACTER;
+							}
 						}
 					}
 				}
