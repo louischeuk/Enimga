@@ -46,6 +46,7 @@ void Reflector::check_config(const char *filename) {
 				else {
 
 					if (!(in >> input))
+						cerr << "Incorrect (odd) number of parameters in reflector file " << filename << endl;
 						code = IMPOSSIBLE_PLUGBOARD_CONFIGURATION;
 					else {
 						count++;
