@@ -36,7 +36,7 @@ bool is_repeated(const int n, const int number, const int map[]) {
 
 /* functio that returns the remainder when dividing number by 26 */
 int mod(const int &number) {
-	return (number + 26 + 26) % 26;
+	return (number + 26) % 26;
 }
 
 int string_to_int(const string &string) {
