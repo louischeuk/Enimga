@@ -9,9 +9,9 @@ Enigma::Enigma(int argc, char** argv) {
 	reflector = NULL;
 	number_of_rotor = 0;
 
-	for (int i=0 ; i < argc; i++) {
+	// for (int i=0 ; i < argc; i++) {
 //		cout << "Config file " << i << " is: " << argv[i] << endl;
-	}
+	// }
 }
 
 void Enigma::check_config(int argc, char **argv) {
@@ -45,7 +45,7 @@ void Enigma::check_config(int argc, char **argv) {
 							rotor[i]->check_config(argv[i+3]);
 							code = rotor[i]->code;
 
-							if (code != NO_ERROR) { // delete the rotors 
+							if (code != NO_ERROR) { // delete the rotors
 								for (int j=0; j < i; j++)
 									delete rotor[j];
 								delete [] rotor;

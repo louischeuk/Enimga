@@ -86,7 +86,7 @@ void Rotor::implement_config(const char* filename) {
 	int input_number;
 	for (int i=0; i < 26 && (code == NO_ERROR); i++) { 	// first 26 alphabet config
 		in >> input;
-		input_number = stoi(input);
+		input_number = string_to_int(input);
 		alphabet_map[i] = input_number; // configuration is stored in righ-hand contact
 	}
 
@@ -153,10 +153,12 @@ int set_starting_pos(Rotor **rotor, int number_of_rotors, const char *filename) 
 	string input;
 	for (int i=0; i < number_of_rotors; i++) {
 		if (!(in >> input))
+			cerr << "No starting position for rotor" << i << " in rotor position file: " << filename << endl;
 			return NO_ROTOR_STARTING_POSITION;
 		if (!is_index_valid(input))
 			return INVALID_INDEX;
 		if (!is_numeric(input))
+			cerr << "Non-numeric character in rotor positions file: " << filename << endl;
 			return NON_NUMERIC_CHARACTER;
 
 		rotor[i]->top_pos = stoi(input);
