@@ -43,28 +43,28 @@ void Reflector::check_config(const char *filename) {
 					code = INVALID_INDEX;
 				else if (!is_numeric(input))
 					code = NON_NUMERIC_CHARACTER;
-				// else {
-				//
-				// 	if (!(in >> input))
-				// 		code = IMPOSSIBLE_PLUGBOARD_CONFIGURATION;
-				// 	else {
-				// 		count++;
-				// 		if (is_repeated_in_map(input, reflector_map)) {
-				// 			code = IMPOSSIBLE_PLUGBOARD_CONFIGURATION;
-				// 		} else {
-				// 			reflector_map.insert(pair<string,int>(input, count));
-				//
-				// 			if (!is_index_valid(input))
-				// 				code = INVALID_INDEX;
-				// 			else if (!is_numeric(input))
-				// 				code = NON_NUMERIC_CHARACTER;
-				// 		}
-				// 	}
-				// }
+				else {
+
+					if (!(in >> input))
+						code = IMPOSSIBLE_PLUGBOARD_CONFIGURATION;
+					else {
+						count++;
+						if (is_repeated_in_map(input, reflector_map)) {
+							code = IMPOSSIBLE_PLUGBOARD_CONFIGURATION;
+						} else {
+							reflector_map.insert(pair<string,int>(input, count));
+
+							if (!is_index_valid(input))
+								code = INVALID_INDEX;
+							else if (!is_numeric(input))
+								code = NON_NUMERIC_CHARACTER;
+						}
+					}
+				}
 			}
 		}
-		if (count%2 !=0 )
-			code = IMPOSSIBLE_PLUGBOARD_CONFIGURATION;
+		// if (count%2 !=0 )
+		// 	code = IMPOSSIBLE_PLUGBOARD_CONFIGURATION;
 //		cout << count << endl;
 	}
 	in.close();
