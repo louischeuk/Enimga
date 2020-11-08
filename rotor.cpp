@@ -34,7 +34,7 @@ void Rotor::check_config(const char* filename) {
 			} else {
 				if (is_repeated_in_map(input, rotor_map)) {
 					cerr << "Invalid mapping of input " << i << " to output " << input;
-					cerr << " (output " << input << " is already mapped to from input " << rotor_map[input] << ") in" << endl;
+					cerr << " (output " << input << " is already mapped to from input " << rotor_map[input] << ") in " << endl;
 					code = INVALID_ROTOR_MAPPING;
 				} else {
 					rotor_map.insert(pair<string,int>(input, i));

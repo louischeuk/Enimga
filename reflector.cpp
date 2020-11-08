@@ -31,14 +31,17 @@ void Reflector::check_config(const char *filename) {
 			count++;
 
 			if (is_repeated_in_map(input, reflector_map)) {
-				code = IMPOSSIBLE_PLUGBOARD_CONFIGURATION;
+				code = INVALID_REFLECTOR_MAPPING;
 			} else {
 				// put every string into the map
 				reflector_map.insert(pair<string,int>(input, count));
 
 				// check varies conditions that would cause faulty
-				if (count > 26)
-					code = INCORRECT_NUMBER_OF_PLUGBOARD_PARAMETERS;
+				if (count > 26) {
+					cerr << "Incorrect number of parameters in reflector file " << filename << endl;
+					code = INCORRECT_NUMBER_OF_REFLECTOR_PARAMETERS;
+				}
+
 				else if (!is_index_valid(input))
 					code = INVALID_INDEX;
 				else if (!is_numeric(input)) {
@@ -47,11 +50,11 @@ void Reflector::check_config(const char *filename) {
 				} else {
 					if (!(in >> input)) {
 						cerr << "Incorrect (odd) number of parameters in reflector file " << filename << endl;
-						code = IMPOSSIBLE_PLUGBOARD_CONFIGURATION;
+						code = INCORRECT_NUMBER_OF_REFLECTOR_PARAMETERS;
 					} else {
 						count++;
 						if (is_repeated_in_map(input, reflector_map)) {
-							code = IMPOSSIBLE_PLUGBOARD_CONFIGURATION;
+							code = INVALID_REFLECTOR_MAPPING;
 						} else {
 							reflector_map.insert(pair<string,int>(input, count));
 
