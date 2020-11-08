@@ -9,7 +9,7 @@ Reflector::Reflector(const char* filename) {
 	for (int i=0; i < 26; i++)
 		this->alphabet_map[i] = i;
 
-	cout << "reflector initialised with config file: " << filename << endl;
+//	cout << "reflector initialised with config file: " << filename << endl;
 
 }
 
@@ -65,7 +65,7 @@ void Reflector::check_config(const char *filename) {
 		}
 		if (count%2 !=0 )
 			code = IMPOSSIBLE_PLUGBOARD_CONFIGURATION;
-		cout << count << endl;
+//		cout << count << endl;
 	}
 	in.close();
 }
@@ -88,12 +88,12 @@ void Reflector::implement_config(const char *filename) {
 		in_2.close();
 	}
 	//////////////////////
-	cout << code << endl;
-	cout << "Reflector array: ";
-	for (int j=0; j < 26; j++) {
-		cout << alphabet_map[j] << " ";
-	}
-	cout << endl;
+//	cout << code << endl;
+//	cout << "Reflector array: ";
+//	for (int j=0; j < 26; j++) {
+//		cout << alphabet_map[j] << " ";
+//	}
+//	cout << endl;
 	///////////////
 }
 

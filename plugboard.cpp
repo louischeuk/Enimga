@@ -8,7 +8,7 @@ Plugboard::Plugboard(const char* filename) {
 	for (int i=0; i < 26; i++)
 		this->alphabet_map[i] = i;
 
-	cout << "Plugboard with configuration file: " << filename << endl;
+//	cout << "Plugboard with configuration file: " << filename << endl;
 }
 
 /* check configuration */
@@ -56,7 +56,7 @@ void Plugboard::check_config(const char* filename) {
 		}
 		if (count %2 != 0)
 			code = IMPOSSIBLE_PLUGBOARD_CONFIGURATION;
-		cout << "count is " << count << endl;
+//		cout << "count is " << count << endl;
 	}
 	in.close();
 }
@@ -79,12 +79,12 @@ void Plugboard::implement_config(const char* filename) {
 		in_2.close();
 	}
 	//////////////////////
-	cout << code << endl;
-	cout << "Plugboard array: ";
-	for (int j=0; j < 26; j++) {
-		cout << alphabet_map[j] << " ";
-	}
-	cout << endl;
+//	cout << code << endl;
+//	cout << "Plugboard array: ";
+//	for (int j=0; j < 26; j++) {
+//		cout << alphabet_map[j] << " ";
+//	}
+//	cout << endl;
 	///////////////
 }
 

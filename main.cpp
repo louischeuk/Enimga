@@ -86,16 +86,16 @@ int main(int argc, char** argv) {
         }
     } else if (enigma.code == NO_ERROR) {
         enigma.implement_config(argc, argv);
-        cout << "enigma can be used." << endl;
+//        cout << "enigma can be used." << endl;
     }
 
 
     /* start inputting letters */
-    cout << "Input any uppercase letter (A-Z) for encryption: ";
+//    cout << "Input any uppercase letter (A-Z) for encryption: ";
     string letters;
     int letter_int;
     cin >> ws >> letters;
-    cout << '\n' << "Encrypted ciphertext is: ";
+//    cout << '\n' << "Encrypted ciphertext is: ";
 
     for (string::iterator letter = letters.begin(); letter < letters.end(); letter++) {
         if (*letter < 65 || *letter > 90) {

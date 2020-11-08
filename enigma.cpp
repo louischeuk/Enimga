@@ -10,7 +10,7 @@ Enigma::Enigma(int argc, char** argv) {
 	number_of_rotor = 0;
 
 	for (int i=0 ; i < argc; i++) {
-		cout << "Config file " << i << " is: " << argv[i] << endl;
+//		cout << "Config file " << i << " is: " << argv[i] << endl;
 	}
 }
 
@@ -22,7 +22,7 @@ void Enigma::check_config(int argc, char **argv) {
 		plugboard->check_config(argv[1]);
 		code = plugboard->code;
 		if (code == NO_ERROR) {
-			cout << "plugboad config ok" << endl;
+//			cout << "plugboad config ok" << endl;
 
 			if (argc == 2) {
 				code = INSUFFICIENT_NUMBER_OF_PARAMETERS;
@@ -31,12 +31,12 @@ void Enigma::check_config(int argc, char **argv) {
 				reflector->check_config(argv[2]);
 				code = reflector->code;
 				if (code == NO_ERROR) {
-					cout << "Reflector config ok " << endl;
+//					cout << "Reflector config ok " << endl;
 
 					if (argc == 3) {
 						code = INSUFFICIENT_NUMBER_OF_PARAMETERS;
 					} else if (argc >= 4) {
-						cout << "argc is >= 4" << endl;
+//						cout << "argc is >= 4" << endl;
 						rotor = new Rotor *[argc - 4]; // an array of rotors
 						number_of_rotor = argc - 4;
 
@@ -50,27 +50,27 @@ void Enigma::check_config(int argc, char **argv) {
 									delete rotor[j];
 								delete [] rotor;
 							}
-							cout << "rotor "<< argv[i+3] << " config ok" << endl;
+//							cout << "rotor "<< argv[i+3] << " config ok" << endl;
 						}
 
 						if (code == NO_ERROR) {
-							cout << "all(s) rotor config ok!" << endl;
+//							cout << "all(s) rotor config ok!" << endl;
 							code = set_starting_pos(rotor, number_of_rotor, argv[argc - 1]);
 						}
 
 						if (code == NO_ERROR) { // set position succeed
 
-							cout << "set starting position ok" << endl;
+//							cout << "set starting position ok" << endl;
 
-							cout << argc - 4 << " rotor(s) config using: " << endl; // how many rotors
+//							cout << argc - 4 << " rotor(s) config using: " << endl; // how many rotors
 							for (int i=3; i <= argc - 2; i++ ) {
 								cout << argv[i] << endl;
 							}
-							cout << "Their position are configured using " << argv[argc-1] << endl; // position
+//							cout << "Their position are configured using " << argv[argc-1] << endl; // position
 						}
 					}
 					if (code == NO_ERROR) {
-						cout << "config done" << endl; // succeed
+//						cout << "config done" << endl; // succeed
 					}
 				}
 			}

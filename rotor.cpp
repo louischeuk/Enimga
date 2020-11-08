@@ -12,7 +12,7 @@ Rotor::Rotor(const char* filename) {
 		this->alphabet_map[i] = i;
 	}
 
-	cout << "Rotor with configuration file " << filename << endl;
+//	cout << "Rotor with configuration file " << filename << endl;
 }
 
 /* check the rotor configuration file */
@@ -41,7 +41,7 @@ void Rotor::check_config(const char* filename) {
 					else if (!is_numeric(input))
 						code = NON_NUMERIC_CHARACTER;
 					else {
-						cout << "alphabet" << input << endl;
+//						cout << "alphabet" << input << endl;
 					}
 				}
 			}
@@ -60,7 +60,7 @@ void Rotor::check_config(const char* filename) {
 					if (is_repeated(i, input_number, temp_notch_pos))
 						code = INVALID_ROTOR_MAPPING;
 					else {
-						cout << "notch " << input << endl;
+//						cout << "notch " << input << endl;
 						temp_notch_pos[i] = input_number;
 						number_of_notch++;
 					}
