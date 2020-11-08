@@ -2,7 +2,7 @@
 
 /* function definition that return FALSE if the file contains a number that is not between 0 and 25 */
 bool is_index_valid(const string &string) {
-	int number = stoi(string);
+	int number = string_to_int(string);
 	if (number < 0 || number > 25) return 0;
 	return 1;
 }
@@ -43,6 +43,6 @@ int string_to_int(const string &string) {
     int number;
     stringstream converter(string);
     converter >> number;
-    
+
     return number;
 }
