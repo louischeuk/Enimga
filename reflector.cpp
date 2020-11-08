@@ -45,10 +45,10 @@ void Reflector::check_config(const char *filename) {
 					code = NON_NUMERIC_CHARACTER;
 				else {
 
-					if (!(in >> input))
+					if (!(in >> input)) {
 						cerr << "Incorrect (odd) number of parameters in reflector file " << filename << endl;
 						code = IMPOSSIBLE_PLUGBOARD_CONFIGURATION;
-					else {
+					} else {
 						count++;
 						if (is_repeated_in_map(input, reflector_map)) {
 							code = IMPOSSIBLE_PLUGBOARD_CONFIGURATION;

@@ -6,7 +6,10 @@
 #include <string>
 #include <map>
 #include "helper.h"
+// #include "enigma.h"
 #include "errors.h"
+
+// class Enigma;
 
 class Rotor {
 	// int alphabet_map[2][26];
