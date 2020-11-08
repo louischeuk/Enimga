@@ -32,7 +32,7 @@ void Reflector::check_config(const char *filename) {
 
 			// check varies conditions that would cause faulty
 			if (count > 26) {
-				cerr << "Incorrect number of parameters in reflector file " << filename << endl;
+				cerr << "Incorrect (odd) number of parameters in reflector file " << filename << endl;
 				code = INCORRECT_NUMBER_OF_REFLECTOR_PARAMETERS;
 			} else if (is_repeated_in_map(input, reflector_map)) {
 				code = INVALID_REFLECTOR_MAPPING;
@@ -69,7 +69,7 @@ void Reflector::check_config(const char *filename) {
 		}
 		if (code == NO_ERROR) {
 			if ((count < 26)) {
-				cerr << "Insufficient number of mapping in reflector file: " << filename << endl;
+				cerr << "Insufficient number of mappings in reflector file: " << filename << endl;
 				code = INCORRECT_NUMBER_OF_REFLECTOR_PARAMETERS;
 			}
 		}
