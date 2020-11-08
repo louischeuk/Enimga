@@ -71,7 +71,6 @@ int main(int argc, char** argv) {
                 cerr << "Invalid reflector mapping!" << endl;
                 return INVALID_REFLECTOR_MAPPING;
             case 10:
-                cerr << "Incorrect number of reflector parameters!" << endl;
                 return INCORRECT_NUMBER_OF_REFLECTOR_PARAMETERS;
             case 11:
                 cerr << "Error opening cinfiguration file" << endl;

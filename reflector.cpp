@@ -69,9 +69,10 @@ void Reflector::check_config(const char *filename) {
 				}
 			}
 		}
-		// if (count%2 !=0 )
-		// 	code = IMPOSSIBLE_PLUGBOARD_CONFIGURATION;
-//		cout << count << endl;
+		if ((count < 26)) {
+			cerr << "Insufficient number of mapping in reflector file: " << filename << endl;
+			code = INCORRECT_NUMBER_OF_REFLECTOR_PARAMETERS;
+		}
 	}
 	in.close();
 }

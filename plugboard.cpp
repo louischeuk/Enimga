@@ -26,22 +26,25 @@ void Plugboard::check_config(const char* filename) {
 
 		while ( (in >> input) && (code == NO_ERROR) ) { // get first string of each pair
 			count++;
-			if (is_repeated_in_map(input, plugboard_map)) { // check all the conditions
+
+			if (count > 26) {
+				cerr << "Incorrect number of parameters in plugboard file " << filename << endl;
+				code = INCORRECT_NUMBER_OF_PLUGBOARD_PARAMETERS;
+			} else if (is_repeated_in_map(input, plugboard_map)) { // check all the conditions
 				code = IMPOSSIBLE_PLUGBOARD_CONFIGURATION;
 			} else {
 				plugboard_map.insert(pair<string,int>(input, count));
-				if (count > 26)
-					code = INCORRECT_NUMBER_OF_PLUGBOARD_PARAMETERS;
-				else if (!is_index_valid(input))
+
+				if (!is_index_valid(input)) {
 					code = INVALID_INDEX;
-				else if (!is_numeric(input)) {
+				} else if (!is_numeric(input)) {
 					cerr << "Non-numeric character in plugboard file " << filename << endl;
 					code = NON_NUMERIC_CHARACTER;
 				} else {
 					if (!(in >> input)) { // if total amount is odd number
 						cerr << "Incorrect number of parameters in plugboard file " << filename << endl;
 						code = INCORRECT_NUMBER_OF_PLUGBOARD_PARAMETERS;
-					}	else { // get second string of each pair
+					} else { // get second string of each pair
 						count++;
 						if (is_repeated_in_map(input, plugboard_map)) {
 							code = IMPOSSIBLE_PLUGBOARD_CONFIGURATION;
