@@ -61,14 +61,12 @@ int main(int argc, char** argv) {
             case 5:
                 return IMPOSSIBLE_PLUGBOARD_CONFIGURATION;
             case 6:
-                cerr << "Incorrect number of plugboard parameters!" << endl;
                 return INCORRECT_NUMBER_OF_PLUGBOARD_PARAMETERS;
             case 7:
                 return INVALID_ROTOR_MAPPING;
             case 8:
                 return NO_ROTOR_STARTING_POSITION;
             case 9:
-                cerr << "Invalid reflector mapping!" << endl;
                 return INVALID_REFLECTOR_MAPPING;
             case 10:
                 return INCORRECT_NUMBER_OF_REFLECTOR_PARAMETERS;

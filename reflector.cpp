@@ -30,19 +30,17 @@ void Reflector::check_config(const char *filename) {
 		while ( (in >> input) && (code == NO_ERROR) ) {
 			count++;
 
-			if (is_repeated_in_map(input, reflector_map)) {
+			// check varies conditions that would cause faulty
+			if (count > 26) {
+				cerr << "Incorrect number of parameters in reflector file " << filename << endl;
+				code = INCORRECT_NUMBER_OF_REFLECTOR_PARAMETERS;
+			} else if (is_repeated_in_map(input, reflector_map)) {
 				code = INVALID_REFLECTOR_MAPPING;
 			} else {
 				// put every string into the map
 				reflector_map.insert(pair<string,int>(input, count));
 
-				// check varies conditions that would cause faulty
-				if (count > 26) {
-					cerr << "Incorrect number of parameters in reflector file " << filename << endl;
-					code = INCORRECT_NUMBER_OF_REFLECTOR_PARAMETERS;
-				}
-
-				else if (!is_index_valid(input))
+				if (!is_index_valid(input))
 					code = INVALID_INDEX;
 				else if (!is_numeric(input)) {
 					cerr << "Non-numeric character in reflector file " << filename << endl;
@@ -69,9 +67,11 @@ void Reflector::check_config(const char *filename) {
 				}
 			}
 		}
-		if ((count < 26)) {
-			cerr << "Insufficient number of mapping in reflector file: " << filename << endl;
-			code = INCORRECT_NUMBER_OF_REFLECTOR_PARAMETERS;
+		if (code == NO_ERROR) {
+			if ((count < 26)) {
+				cerr << "Insufficient number of mapping in reflector file: " << filename << endl;
+				code = INCORRECT_NUMBER_OF_REFLECTOR_PARAMETERS;
+			}
 		}
 	}
 	in.close();
