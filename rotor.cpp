@@ -86,7 +86,7 @@ void Rotor::implement_config(const char* filename) {
 
 	string input;
 	int input_number;
-	for (int i=0; i < 26 && (code == NO_ERROR); i++) { 	// first 26 alphabet config
+	for (int i=0; i < 26; i++) { 	// first 26 alphabet config
 		in >> input;
 		input_number = string_to_int(input);
 		alphabet_map[i] = input_number; // configuration is stored in righ-hand contact
