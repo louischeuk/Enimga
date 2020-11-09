@@ -166,5 +166,3 @@ int Rotor::get_number_of_notch() {
 int Rotor::get_notch_pos(const int &iterator) {
 	return notch_pos[iterator];
 }
-
-/* friend function that sets the starting postition of rotors */

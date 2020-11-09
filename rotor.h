@@ -35,6 +35,7 @@ public:
 	int get_number_of_notch(); // getter
 	int get_notch_pos(const int &iterator);
 
+
 	// friend int set_starting_pos(Rotor **rotor, int number_of_rotors, const char *filename); // number_of_rotors is from the enimga class,
 };
 

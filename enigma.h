@@ -26,6 +26,8 @@ public:
 
 	int set_starting_pos(Rotor **rotor, int number_of_rotors, const char *filename);
 
+	void rotor_offset(int number_of_rotor);
+
 	~Enigma();
 
 	// int set_starting_pos(Rotor **rotor, int number_of_rotors, const char *filename); // in rotor
