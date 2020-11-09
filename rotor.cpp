@@ -34,7 +34,8 @@ void Rotor::check_config(const char* filename) {
 			} else {
 				if (is_repeated_in_map(input, rotor_map)) {
 					cerr << "Invalid mapping of input " << i << " to output " << input;
-					cerr << " (output " << input <<  " is already mapped to from input " << rotor_map[input] << ") in" << endl;
+					cerr << " (output " << input <<  " is already mapped to from input ";
+					cerr << rotor_map[input] << ") in " << filename << endl;
 					code = INVALID_ROTOR_MAPPING;
 				} else {
 					rotor_map.insert(pair<string,int>(input, i));
@@ -154,6 +155,10 @@ int Rotor::get_top_pos() {
 	return top_pos;
 }
 
+void Rotor::set_top_pos(int position) {
+	top_pos = position;
+}
+
 int Rotor::get_number_of_notch() {
 	return number_of_notch;
 }
@@ -163,27 +168,3 @@ int Rotor::get_notch_pos(const int &iterator) {
 }
 
 /* friend function that sets the starting postition of rotors */
-int set_starting_pos(Rotor **rotor, int number_of_rotors, const char *filename) {
-	ifstream in;
-	in.open(filename);
-
-	if (in.fail())
-		return ERROR_OPENING_CONFIGURATION_FILE;
-
-	string input;
-	for (int i=0; i < number_of_rotors; i++) {
-		if (!(in >> input)) {
-			cerr << "No starting position for rotor " << i << " in rotor position file: " << filename << endl;
-			return NO_ROTOR_STARTING_POSITION;
-		}
-		if (!is_numeric(input)) {
-			cerr << "Non-numeric character in rotor positions file " << filename << endl;
-			return NON_NUMERIC_CHARACTER;
-		}
-		if (!is_index_valid(input))
-			return INVALID_INDEX;
-
-		rotor[i]->top_pos = string_to_int(input);
-	}
-	return NO_ERROR;
-}
