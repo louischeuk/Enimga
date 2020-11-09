@@ -21,7 +21,7 @@ void Enigma::check_config(int argc, char **argv) {
 	} else {
 		plugboard = new Plugboard(argv[1]);
 		plugboard->check_config(argv[1]);
-		code = plugboard->code;
+		code = plugboard->get_code();
 		if (code == NO_ERROR) {
 //			cout << "plugboad config ok" << endl;
 
@@ -31,7 +31,7 @@ void Enigma::check_config(int argc, char **argv) {
 			} else {
 				reflector = new Reflector(argv[2]);
 				reflector->check_config(argv[2]);
-				code = reflector->code;
+				code = reflector->get_code();
 				if (code == NO_ERROR) {
 //					cout << "Reflector config ok " << endl;
 
@@ -46,7 +46,7 @@ void Enigma::check_config(int argc, char **argv) {
 						for (int i=0; i < (argc - 4) && (code == NO_ERROR); i++) {
 							rotor[i] = new Rotor(argv[i+3]);
 							rotor[i]->check_config(argv[i+3]);
-							code = rotor[i]->code;
+							code = rotor[i]->get_code();
 
 							if (code != NO_ERROR) { // delete the rotors
 								for (int j=0; j < i; j++)
@@ -101,8 +101,8 @@ int Enigma::encrypt(const int &letter) {
 	if (number_of_rotor > 0) { 	// when a letter is pressed, the rightmost rotor rotates
 		rotor[number_of_rotor - 1]->rotate();
 		for (int i = number_of_rotor-1 ; i>0; i--) {
-			for (int j=0; j < (rotor[i]->number_of_notch) ; j++) { // iterator every notches
-				if ( rotor[i]->top_pos == rotor[i]->notch_pos[j])
+			for (int j=0; j < (rotor[i]->get_number_of_notch()) ; j++) { // iterator every notches
+				if ( rotor[i]->get_top_pos() == rotor[i]->get_notch_pos(j))
 					rotor[i-1]->rotate(); // top_pos+1
 			}
  		}
@@ -129,4 +129,9 @@ int Enigma::encrypt(const int &letter) {
 	encoded_letter = plugboard->encrypt(encoded_letter); // plugboard
 
 	return encoded_letter;
+}
+
+
+int Enigma::get_code() {
+	return code;
 }

@@ -106,3 +106,7 @@ void Reflector::implement_config(const char *filename) {
 int Reflector::encrypt(const int &letter) {
 	return alphabet_map[letter];
 }
+
+int Reflector::get_code() {
+	return code;
+}

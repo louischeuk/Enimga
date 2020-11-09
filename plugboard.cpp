@@ -96,3 +96,7 @@ void Plugboard::implement_config(const char* filename) {
 int Plugboard::encrypt(const int &letter) {
 	return alphabet_map[letter];
 }
+
+int Plugboard::get_code() {
+	return code;
+}

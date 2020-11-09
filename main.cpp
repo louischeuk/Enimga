@@ -44,8 +44,8 @@ int main(int argc, char** argv) {
     Enigma enigma(argc, argv);
     enigma.check_config(argc, argv);
 
-    if (enigma.code != NO_ERROR) {
-        switch(enigma.code) {
+    if (enigma.get_code() != NO_ERROR) {
+        switch(enigma.get_code()) {
             case 1:
                 return INSUFFICIENT_NUMBER_OF_PARAMETERS;
             case 2:
@@ -74,7 +74,7 @@ int main(int argc, char** argv) {
             default:
                 break;
         }
-    } else if (enigma.code == NO_ERROR) {
+    } else if (enigma.get_code() == NO_ERROR) {
         enigma.implement_config(argc, argv);
 //        cout << "enigma can be used." << endl;
     }

@@ -146,6 +146,21 @@ void Rotor::rotate() {
 	top_pos = mod(top_pos + 1);
 }
 
+int Rotor::get_code() {
+	return code;
+}
+
+int Rotor::get_top_pos() {
+	return top_pos;
+}
+
+int Rotor::get_number_of_notch() {
+	return number_of_notch;
+}
+
+int Rotor::get_notch_pos(const int &iterator) {
+	return notch_pos[iterator];
+}
 
 /* friend function that sets the starting postition of rotors */
 int set_starting_pos(Rotor **rotor, int number_of_rotors, const char *filename) {
