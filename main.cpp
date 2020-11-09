@@ -97,7 +97,7 @@ int main(int argc, char** argv) {
         *letter = static_cast<char>(letter_int + 65);
         cout << *letter;
     }
-    cout << endl;
+    cout << flush;
 
     return NO_ERROR;
 }
