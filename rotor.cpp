@@ -64,7 +64,6 @@ void Rotor::check_config(const char* filename) {
 					else {
 //						cout << "notch " << input << endl;
 						temp_notch_pos[i] = input_number;
-						cout << "temp_notch_pos " << i << " is" << temp_notch_pos[i] << endl;
 						number_of_notch++;
 					}
 				}
@@ -77,14 +76,12 @@ void Rotor::check_config(const char* filename) {
 			}
 			number_of_notch = 0; // reset to 0 here
 			delete[] temp_notch_pos;
-			cout << "cancelled " << endl;
 		}
 	}
 }
 
 /* implement the configuration */
 void Rotor::implement_config(const char* filename) {
-	cout << " ---------Rotor implement config -----------" <<  endl;
 	ifstream in;
 	in.open(filename);
 
@@ -94,29 +91,21 @@ void Rotor::implement_config(const char* filename) {
 		in >> input;
 		input_number = string_to_int(input);
 		alphabet_map[i] = input_number; // configuration is stored in righ-hand contact
-		cout << "alphabet_map" << i << " is " << input_number << endl;
 	}
 
 	int *temp_notch_pos = new int[26]; 	// store notches in temp array
 	for (int i=0 ; (in >> input) ; i++) { // input the turnover notches
 		input_number = string_to_int(input);
 		temp_notch_pos[i] = input_number;
-		cout << "temp_notch_pos " << i << " is" << temp_notch_pos[i] << endl;
 		number_of_notch++;
-		cout << "number of notch " << number_of_notch << endl;
 	}
 	in.close();
 
-	cout << "test " << endl;
 	notch_pos = new int[number_of_notch]; // store notches in data member
 	for (int notch=0 ; notch < number_of_notch ; notch++ ) {
 		notch_pos[notch] = temp_notch_pos[notch];
-		cout << "notch_pos " << notch << " is " << notch_pos[notch] << endl;
 	}
-
 	delete[] temp_notch_pos;
-	cout << "cancelled " << endl;
-	cout << "number_of_notch" << number_of_notch << endl;
 }
 
 
@@ -180,7 +169,6 @@ int set_starting_pos(Rotor **rotor, int number_of_rotors, const char *filename) 
 			return INVALID_INDEX;
 
 		rotor[i]->top_pos = string_to_int(input);
-		cout << "rotor " << i << " top pos" << "is" << rotor[i]->top_pos << endl;
 	}
 	return NO_ERROR;
 }
