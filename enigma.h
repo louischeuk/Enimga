@@ -8,8 +8,6 @@
 #include "reflector.h"
 #include "helper.h"
 
-// class Rotor;
-
 class Enigma {
 	Plugboard *plugboard;
 	Rotor **rotor;
@@ -21,16 +19,12 @@ public:
 	void check_config(int argc, char **argv);
 	void implement_config(int argc, char **argv);
 	int encrypt(const int &letter);
-
-	int get_code(); // setter
-
-	int set_starting_pos(Rotor **rotor, int number_of_rotors, const char *filename);
-
 	void rotor_offset(int number_of_rotor);
 
-	~Enigma();
+	int get_code(); // setter
+	int set_starting_pos(Rotor **rotor, int number_of_rotors, const char *filename);
 
-	// int set_starting_pos(Rotor **rotor, int number_of_rotors, const char *filename); // in rotor
+	~Enigma();
 };
 
 #endif

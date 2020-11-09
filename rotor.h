@@ -28,15 +28,12 @@ public:
 	int map_l_to_r(const int &letter);
 	void rotate();
 
-
-	int get_code(); // getter
-	int get_top_pos(); // getter
-	void set_top_pos(int position);
-	int get_number_of_notch(); // getter
+	int get_code();
+	int get_top_pos();
+	void set_top_pos(int position); // setter
+	int get_number_of_notch();
 	int get_notch_pos(const int &iterator);
 
-
-	// friend int set_starting_pos(Rotor **rotor, int number_of_rotors, const char *filename); // number_of_rotors is from the enimga class,
 };
 
 #endif

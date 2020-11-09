@@ -24,8 +24,7 @@ void Reflector::check_config(const char *filename) {
 		int count = 0;
 		map<string, int> reflector_map;
 
-		// for every string from the filename
-		while ( (in >> input) && (code == NO_ERROR) ) {
+		while ( (in >> input) && (code == NO_ERROR) ) { // for every string from the filename
 			count++;
 
 			// check varies conditions that would cause faulty
@@ -92,14 +91,6 @@ void Reflector::implement_config(const char *filename) {
 		}
 		in_2.close();
 	}
-	//////////////////////
-//	cout << code << endl;
-//	cout << "Reflector array: ";
-//	for (int j=0; j < 26; j++) {
-//		cout << alphabet_map[j] << " ";
-//	}
-//	cout << endl;
-	///////////////
 }
 
 /* encrypt the letter(s) with the plugboard setting */

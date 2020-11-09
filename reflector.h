@@ -11,7 +11,6 @@ class Reflector {
 	int alphabet_map[26];
 	int code; // tells whether the config is valid or not
 public:
-
 	Reflector(const char *filename);
 	void check_config(const char *filename);
 	void implement_config(const char *filename);

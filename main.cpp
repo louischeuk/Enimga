@@ -73,7 +73,6 @@ int main(int argc, char** argv) {
         }
     } else if (enigma.get_code() == NO_ERROR) {
         enigma.implement_config(argc, argv);
-//        cout << "enigma can be used." << endl;
     }
 
 //    cout << "Input any uppercase letter (A-Z) for encryption: ";

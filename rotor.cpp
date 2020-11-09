@@ -63,7 +63,6 @@ void Rotor::check_config(const char* filename) {
 					if ((i>0) && is_repeated(i, input_number, temp_notch_pos))
 						code = INVALID_ROTOR_MAPPING;
 					else {
-//						cout << "notch " << input << endl;
 						temp_notch_pos[i] = input_number;
 						number_of_notch++;
 					}
@@ -108,7 +107,6 @@ void Rotor::implement_config(const char* filename) {
 	}
 	delete[] temp_notch_pos;
 }
-
 
 /* conversion function from the right-hand contact to the left-hand contact of rotor */
 int Rotor::w(const int &letter) {

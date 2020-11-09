@@ -82,14 +82,6 @@ void Plugboard::implement_config(const char* filename) {
 		}
 		in_2.close();
 	}
-	//////////////////////
-//	cout << code << endl;
-//	cout << "Plugboard array: ";
-//	for (int j=0; j < 26; j++) {
-//		cout << alphabet_map[j] << " ";
-//	}
-//	cout << endl;
-	///////////////
 }
 
 /* encrypt the letter(s) with the plugboard setting */
