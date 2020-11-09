@@ -159,7 +159,6 @@ int Enigma::set_starting_pos(Rotor **rotor, int number_of_rotors, const char *fi
 
 		// rotor[i]->top_pos = string_to_int(input);
 		rotor[i]->set_top_pos(string_to_int(input));
-		cout << "starting pos" << rotor[i]->get_top_pos() << endl;
 	}
 	return NO_ERROR;
 }
@@ -167,17 +166,12 @@ int Enigma::set_starting_pos(Rotor **rotor, int number_of_rotors, const char *fi
 
 void Enigma::rotor_offset(int number_of_rotor) {
 
-	if (number_of_rotor > 0){ // base case
+	if (number_of_rotor > 0) { // base case
+		rotor[number_of_rotor - 1]->rotate(); // top_pos + 1
 
-		rotor[number_of_rotor - 1]->rotate();
-		// cout << "Rotor " << number_of_rotor-1 << " top_pos " << rotor[number_of_rotor - 1]->get_top_pos() << endl;
-
-		for (int i=0; i < rotor[number_of_rotor - 1]->get_number_of_notch() ; i++) { // iterator every notches
-			if ( rotor[number_of_rotor - 1]->get_top_pos() == rotor[number_of_rotor - 1]->get_notch_pos(i)) {
-				// for (int j=0; j < number_of_rotor-1; j++) {
-				// 	cout << "Rotor " << i-1 << " top_pos " << rotor[i-1]->get_top_pos() << endl;
-				// }
-				rotor_offset(number_of_rotor-1); // go to the rotor to the left 
+		for (int i=0; i < rotor[number_of_rotor - 1]->get_number_of_notch() ; i++) { // iterate all notches at that rotor
+			if ( rotor[number_of_rotor - 1]->get_top_pos() == rotor[number_of_rotor - 1]->get_notch_pos(i)) { // if top_pos == notch_pos
+				rotor_offset(number_of_rotor-1); // go to left rotor
 			}
 		}
 	}
