@@ -59,7 +59,7 @@ void Rotor::check_config(const char* filename) {
 					code = NON_NUMERIC_CHARACTER;
 				else {
 					int input_number = string_to_int(input);
-					if (is_repeated(i, input_number, temp_notch_pos))
+					if ((i>0) && is_repeated(i, input_number, temp_notch_pos))
 						code = INVALID_ROTOR_MAPPING;
 					else {
 //						cout << "notch " << input << endl;

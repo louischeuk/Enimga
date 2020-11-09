@@ -17,7 +17,7 @@ bool is_numeric(const string &string);
 /* function declaration that returns TRUE if there is repeated character(s) in a file*/
 bool is_repeated_in_map(const string &key, const map<string,int> &map);
 
-bool is_repeated(const int n, const int number, const int map[]);
+bool is_repeated(const int &n, const int &number, const int map[]);
 
 int mod(const int &number);
 

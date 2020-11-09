@@ -24,8 +24,8 @@ bool is_repeated_in_map(const string &key, const map<string,int> &map) {
 }
 
 /* function that returns TRUE if there is repeated character in an array */
-bool is_repeated(const int n, const int number, const int map[]) {
-	if (n <= 0) return 0; // skip the first one
+bool is_repeated(const int &n, const int &number, const int map[]) {
+	// if (n <= 0) return 0; // skip the first one
 
 	for (int i=0; i<n; i++) {
 		if (map[i] == number)

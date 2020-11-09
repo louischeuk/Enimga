@@ -41,8 +41,6 @@ int main(int argc, char** argv) {
     //     reflector.implement_config("reflectors/II.rf");
     // cout << "Reflector code: " << reflector.code << endl;
 
-
-
     Enigma enigma(argc, argv);
     enigma.check_config(argc, argv);
 
