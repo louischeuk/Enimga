@@ -141,6 +141,12 @@ int Enigma::get_code() {
 Enigma::~Enigma() {
 	if (plugboard != nullptr)
 		delete plugboard;
-	if (plugboard != nullptr)
+	if (reflector != nullptr)
 		delete reflector;
+	if (*rotor != nullptr ) {
+		for (int i=0; i < number_of_rotor; i++) {
+			delete rotor[i];
+		}
+		delete [] rotor;
+	}
 }
