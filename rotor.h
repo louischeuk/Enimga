@@ -12,14 +12,12 @@
 // class Enigma;
 
 class Rotor {
-	// int alphabet_map[2][26];
 	int alphabet_map[26];
 	int code;
 	int top_pos;
 	int number_of_notch;
-	int *notch_pos; // should move to private
+	int *notch_pos;
 public:
-
 	Rotor(const char* filename);
 	void check_config(const char* filename);
 	void implement_config(const char* filename);

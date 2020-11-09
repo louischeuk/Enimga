@@ -15,7 +15,7 @@ class Enigma {
 	Rotor **rotor;
 	Reflector *reflector;
 	int number_of_rotor; // number of rotors
-	int code; // tells whether the config is valid or not
+	int code;
 public:
 
 	Enigma(int argc, char** argv);
@@ -24,6 +24,7 @@ public:
 	int encrypt(const int &letter);
 
 	int get_code(); // setter
+	~Enigma();
 
 	// int set_starting_pos(Rotor **rotor, int number_of_rotors, const char *filename); // in rotor
 };

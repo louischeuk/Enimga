@@ -4,9 +4,9 @@ using namespace std;
 Enigma::Enigma(int argc, char** argv) {
 
 	code = NO_ERROR;
-	plugboard = NULL;
-	rotor = NULL;
-	reflector = NULL;
+	plugboard = nullptr;
+	rotor = nullptr;
+	reflector = nullptr;
 	number_of_rotor = 0;
 
 	// for (int i=0 ; i < argc; i++) {
@@ -134,4 +134,13 @@ int Enigma::encrypt(const int &letter) {
 
 int Enigma::get_code() {
 	return code;
+}
+
+
+
+Enigma::~Enigma() {
+	if (plugboard != nullptr)
+		delete plugboard;
+	if (plugboard != nullptr)
+		delete reflector;
 }

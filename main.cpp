@@ -3,9 +3,6 @@
 #include <fstream>
 #include <map>
 #include "enigma.h"
-// #include "reflector.h"
-// #include "rotor.h"
-// #include "plugboard.h"
 #include "helper.h"
 #include "errors.h"
 
