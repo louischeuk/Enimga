@@ -19,9 +19,10 @@ void Rotor::check_config(const char* filename) {
 	ifstream in;
 	in.open(filename);
 
-	if (in.fail())
+	if (in.fail()) {
+		cerr << "Error opening configuration file in rotor file: " << filename << endl;
 		code = ERROR_OPENING_CONFIGURATION_FILE;
-	else {
+	} else {
 		string input;
 		map<string, int> rotor_map; // store the existed numbers
 
@@ -38,9 +39,10 @@ void Rotor::check_config(const char* filename) {
 				} else {
 					rotor_map.insert(pair<string,int>(input, i));
 
-					if (!is_index_valid(input))
+					if (!is_index_valid(input)) {
+						cerr << "Invalid index in rotor file " << filename << endl;
 						code = INVALID_INDEX;
-					else if (!is_numeric(input)) {
+					} else if (!is_numeric(input)) {
 						cerr << "Non-numeric character for mapping in rotor file " << filename << endl;
 						code = NON_NUMERIC_CHARACTER;
 					}
@@ -52,15 +54,20 @@ void Rotor::check_config(const char* filename) {
 			int *temp_notch_pos = new int[26]; // each rotor can have maximum of 26 notches
 
 			for (int i=0 ; (in >> input) && (code == NO_ERROR) ; i++) { // check the turnover notches
-				if (!is_index_valid(input))
+				if (!is_index_valid(input)) {
+					cerr << "Invalid index in rotor file " << filename << endl;
 					code = INVALID_INDEX;
-				else if (!is_numeric(input))
+				} else if (!is_numeric(input)) {
+					cerr << "Non-numeric character for mapping in rotor file " << filename << endl;
 					code = NON_NUMERIC_CHARACTER;
-				else {
+				} else {
 					int input_number = string_to_int(input);
-					if ((i>0) && is_repeated(i, input_number, temp_notch_pos))
+					if ((i>0) && is_repeated(i, input_number, temp_notch_pos)) {
+						cerr << "Invalid mapping of input " << i << " to output " << input;
+						cerr << " (output " << input <<  " is already mapped to from input ";
+						cerr << rotor_map[input] << ") in rotor file: " << filename << endl;
 						code = INVALID_ROTOR_MAPPING;
-					else {
+					} else {
 						temp_notch_pos[i] = input_number;
 						number_of_notch++;
 					}
@@ -69,8 +76,10 @@ void Rotor::check_config(const char* filename) {
 			in.close();
 
 			if (code == NO_ERROR) {
-				if (number_of_notch == 0) // rotor must have at least one notch
+				if (number_of_notch == 0) { // rotor must have at least one notch
+					cerr << "Invalid rotor mapping in rotor file " << filename << endl;
 					code = INVALID_ROTOR_MAPPING;
+				}
 			}
 			number_of_notch = 0; // reset to 0 here
 			delete[] temp_notch_pos;

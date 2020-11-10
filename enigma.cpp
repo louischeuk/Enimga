@@ -117,8 +117,10 @@ int Enigma::set_starting_pos(Rotor **rotor, int number_of_rotors, const char *fi
 	ifstream in;
 	in.open(filename);
 
-	if (in.fail())
+	if (in.fail()) {
+		cerr << "Error opening configuration file in rotor position file: " << filename << endl;
 		return ERROR_OPENING_CONFIGURATION_FILE;
+	}
 
 	string input;
 	for (int i=0; i < number_of_rotors; i++) {

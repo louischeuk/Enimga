@@ -29,14 +29,16 @@ void Reflector::check_config(const char *filename) {
 				cerr << "Incorrect (odd) number of parameters in reflector file " << filename << endl;
 				code = INCORRECT_NUMBER_OF_REFLECTOR_PARAMETERS;
 			} else if (is_repeated_in_map(input, reflector_map)) {
+				cerr << "Invalid reflector mapping in reflector file " << filename << endl;
 				code = INVALID_REFLECTOR_MAPPING;
 			} else {
 				// put every string into the map
 				reflector_map.insert(pair<string,int>(input, count));
 
-				if (!is_index_valid(input))
+				if (!is_index_valid(input)) {
+					cerr << "Invalid index in reflector file " << filename << endl;
 					code = INVALID_INDEX;
-				else if (!is_numeric(input)) {
+				} else if (!is_numeric(input)) {
 					cerr << "Non-numeric character in reflector file " << filename << endl;
 					code = NON_NUMERIC_CHARACTER;
 				} else {
@@ -46,13 +48,15 @@ void Reflector::check_config(const char *filename) {
 					} else {
 						count++;
 						if (is_repeated_in_map(input, reflector_map)) {
+							cerr << "Invalid reflector mapping in reflector file " << filename << endl;
 							code = INVALID_REFLECTOR_MAPPING;
 						} else {
 							reflector_map.insert(pair<string,int>(input, count));
 
-							if (!is_index_valid(input))
+							if (!is_index_valid(input)) {
+								cerr << "Invalid index in reflector file " << filename << endl;
 								code = INVALID_INDEX;
-							else if (!is_numeric(input)) {
+							} else if (!is_numeric(input)) {
 								cerr << "Non-numeric character in reflector file " << filename << endl;
 								code = NON_NUMERIC_CHARACTER;
 							}
