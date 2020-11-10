@@ -36,7 +36,7 @@ void Enigma::check_config(int argc, char **argv) {
 					if (argc == 3) {
 						cerr << "usage: enigma plugboard-file reflector-file (<rotor-file>)* rotor-positions" << endl;
 						code = INSUFFICIENT_NUMBER_OF_PARAMETERS;
-					} else if (argc >= 4) {
+					} else if (argc > 4) {
 						rotor = new Rotor *[argc - 4]; // an array of rotors
 						number_of_rotor = argc - 4;
 
