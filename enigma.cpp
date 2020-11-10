@@ -36,42 +36,30 @@ void Enigma::check_config(int argc, char **argv) {
 					if (argc == 3) {
 						cerr << "usage: enigma plugboard-file reflector-file (<rotor-file>)* rotor-positions" << endl;
 						code = INSUFFICIENT_NUMBER_OF_PARAMETERS;
-					} else if (argc > 4) {
-						rotor = new Rotor *[argc - 4]; // an array of rotors
-						number_of_rotor = argc - 4;
+					} else if (argc >= 4) {
+						if (argc > 4 ) {
+							rotor = new Rotor *[argc - 4]; // an array of rotors
+							number_of_rotor = argc - 4;
 
-						for (int i=0; i < (argc - 4) && (code == NO_ERROR); i++) {
-							rotor[i] = new Rotor(argv[i+3]);
-							rotor[i]->check_config(argv[i+3]);
-							code = rotor[i]->get_code();
+							for (int i=0; i < (argc - 4) && (code == NO_ERROR); i++) {
+								rotor[i] = new Rotor(argv[i+3]);
+								rotor[i]->check_config(argv[i+3]);
+								code = rotor[i]->get_code();
 
-							if (code != NO_ERROR) { // delete the rotors
-								for (int j=0; j < i; j++)
-									delete rotor[j];
-								delete [] rotor;
+								if (code != NO_ERROR) { // delete the rotors
+									for (int j=0; j < i; j++)
+										delete rotor[j];
+									delete [] rotor;
+								}
+	//							cout << "rotor "<< argv[i+3] << " config ok" << endl;
 							}
-//							cout << "rotor "<< argv[i+3] << " config ok" << endl;
-						}
 
-						if (code == NO_ERROR) {
-//							cout << "all(s) rotor config ok!" << endl;
-							code = set_starting_pos(rotor, number_of_rotor, argv[argc - 1]);
+							if (code == NO_ERROR) {
+	//							cout << "all(s) rotor config ok!" << endl;
+								code = set_starting_pos(rotor, number_of_rotor, argv[argc - 1]);
+							}
 						}
-
-// 						if (code == NO_ERROR) { // set position succeed
-//
-// //							cout << "set starting position ok" << endl;
-//
-// //							cout << argc - 4 << " rotor(s) config using: " << endl; // how many rotors
-// 							// for (int i=3; i <= argc - 2; i++ ) {
-// 							// 	cout << argv[i] << endl;
-// 							// }
-// //							cout << "Their position are configured using " << argv[argc-1] << endl; // position
-// 						}
 					}
-// 					if (code == NO_ERROR) {
-// //						cout << "config done" << endl; // succeed
-// 					}
 				}
 			}
 		}
