@@ -138,10 +138,10 @@ int Enigma::set_starting_pos(Rotor **rotor, int number_of_rotors, const char *fi
 			cerr << "Non-numeric character in rotor positions file " << filename << endl;
 			return NON_NUMERIC_CHARACTER;
 		}
-		if (!is_index_valid(input))
+		if (!is_index_valid(input)) {
 			cerr << "Invalid input in the file " << filename << endl;
 			return INVALID_INDEX;
-
+		}
 		rotor[i]->set_top_pos(string_to_int(input));
 	}
 	return NO_ERROR;
