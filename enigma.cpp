@@ -1,6 +1,7 @@
 #include "enigma.h"
 using namespace std;
 
+/* constructor */
 Enigma::Enigma(int argc, char** argv) {
 	code = NO_ERROR;
 	plugboard = nullptr;
@@ -9,6 +10,7 @@ Enigma::Enigma(int argc, char** argv) {
 	number_of_rotor = 0;
 }
 
+/* function that checks the configuration of the whole engima */
 void Enigma::check_config(int argc, char **argv) {
 	if (argc == 1) {
 		cerr << "usage: enigma plugboard-file reflector-file (<rotor-file>)* rotor-positions" << endl;
@@ -40,17 +42,9 @@ void Enigma::check_config(int argc, char **argv) {
 								rotor[i] = new Rotor(argv[i+3]);
 								rotor[i]->check_config(argv[i+3]);
 								code = rotor[i]->get_code();
-
-								// if (code != NO_ERROR) { // delete the rotors
-								// 	for (int j=0; j < i; j++)
-								// 		delete rotor[j];
-								// 	delete [] rotor;
-								// }
-	//							cout << "rotor "<< argv[i+3] << " config ok" << endl;
 							}
 
 							if (code == NO_ERROR) {
-	//							cout << "all(s) rotor config ok!" << endl;
 								code = set_starting_pos(rotor, number_of_rotor, argv[argc - 1]);
 							}
 						}
@@ -75,11 +69,11 @@ void Enigma::implement_config(int argc, char **argv) {
 	}
 }
 
-/* encrypt the letter */
+/* function that encrypts the letter */
 int Enigma::encrypt(const int &letter) {
 
 	if (number_of_rotor > 0)
-		rotor_offset(number_of_rotor); // rotate the rotor
+		rotor_rotate(number_of_rotor); // rotate the rotor(s)
 
 	int encoded_letter = letter;
 
@@ -104,23 +98,26 @@ int Enigma::encrypt(const int &letter) {
 	return encoded_letter;
 }
 
-void Enigma::rotor_offset(int number_of_rotor) {
+/* function that rotates the rotor(s) once a letter has been inputted */
+void Enigma::rotor_rotate(int number_of_rotor) {
 
 	if (number_of_rotor > 0) { // base case
-		rotor[number_of_rotor - 1]->rotate(); // top_pos + 1
+		rotor[number_of_rotor - 1]->rotate_one_step(); // top_pos + 1
 
 		for (int i=0; i < rotor[number_of_rotor - 1]->get_number_of_notch() ; i++) { // iterate all notches at that rotor
 			if ( rotor[number_of_rotor - 1]->get_top_pos() == rotor[number_of_rotor - 1]->get_notch_pos(i)) { // if top_pos == notch_pos
-				rotor_offset(number_of_rotor-1); // go to left rotor
+				rotor_rotate(number_of_rotor-1); // go to left rotor
 			}
 		}
 	}
 }
 
+/* getter function thats get the code */
 int Enigma::get_code() {
 	return code;
 }
 
+/* setter function that sets the starting position of the rotors */
 int Enigma::set_starting_pos(Rotor **rotor, int number_of_rotors, const char *filename) {
 	ifstream in;
 	in.open(filename);
@@ -147,12 +144,12 @@ int Enigma::set_starting_pos(Rotor **rotor, int number_of_rotors, const char *fi
 	return NO_ERROR;
 }
 
+/* destructor */
 Enigma::~Enigma() {
 	if (plugboard != nullptr)
 		delete plugboard;
 	if (reflector != nullptr)
 		delete reflector;
-
 	if ( rotor != nullptr ) { // check if the array exists
 		for (int i=0; i < number_of_rotor; i++) { // for every rotor
 			if (rotor[i] != nullptr) {

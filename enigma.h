@@ -19,7 +19,7 @@ public:
 	void check_config(int argc, char **argv);
 	void implement_config(int argc, char **argv);
 	int encrypt(const int &letter);
-	void rotor_offset(int number_of_rotor);
+	void rotor_rotate(int number_of_rotor);
 
 	int get_code(); // setter
 	int set_starting_pos(Rotor **rotor, int number_of_rotors, const char *filename);

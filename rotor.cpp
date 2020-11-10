@@ -141,7 +141,7 @@ int Rotor::map_l_to_r(const int &letter) {
 }
 
 /* function that rotates the top position by 1 */
-void Rotor::rotate() {
+void Rotor::rotate_one_step() {
 	top_pos = mod(top_pos + 1);
 }
 

@@ -26,7 +26,7 @@ public:
 	int w_inverse(const int &letter);
 	int map_r_to_l(const int &letter);
 	int map_l_to_r(const int &letter);
-	void rotate();
+	void rotate_one_step();
 
 	int get_code();
 	int get_top_pos();
