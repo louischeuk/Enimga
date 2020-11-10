@@ -126,7 +126,6 @@ int Enigma::set_starting_pos(Rotor **rotor, int number_of_rotors, const char *fi
 	in.open(filename);
 
 	if (in.fail())
-		cerr << "Error opening the configuration file: " << filename << endl;
 		return ERROR_OPENING_CONFIGURATION_FILE;
 
 	string input;
