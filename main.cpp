@@ -15,35 +15,6 @@ int main(int argc, char** argv) {
 
     if (enigma.get_code() != NO_ERROR) {
         return enigma.get_code();
-        // switch(enigma.get_code()) {
-        //     case 1:
-        //         return INSUFFICIENT_NUMBER_OF_PARAMETERS;
-        //     case 2:
-        //         cerr << "Invalid input character" << endl;
-        //         return INVALID_INPUT_CHARACTER;
-        //     case 3:
-        //         cerr << "Invalid index!" << endl;
-        //         return INVALID_INDEX;
-        //     case 4:
-        //         return NON_NUMERIC_CHARACTER;
-        //     case 5:
-        //         return IMPOSSIBLE_PLUGBOARD_CONFIGURATION;
-        //     case 6:
-        //         return INCORRECT_NUMBER_OF_PLUGBOARD_PARAMETERS;
-        //     case 7:
-        //         return INVALID_ROTOR_MAPPING;
-        //     case 8:
-        //         return NO_ROTOR_STARTING_POSITION;
-        //     case 9:
-        //         return INVALID_REFLECTOR_MAPPING;
-        //     case 10:
-        //         return INCORRECT_NUMBER_OF_REFLECTOR_PARAMETERS;
-        //     case 11:
-        //         cerr << "Error opening cinfiguration file" << endl;
-        //         return ERROR_OPENING_CONFIGURATION_FILE;
-        //     default:
-        //         break;
-        // }
     } else if (enigma.get_code() == NO_ERROR) {
         enigma.implement_config(argc, argv);
     }
