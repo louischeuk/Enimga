@@ -15,9 +15,10 @@ void Plugboard::check_config(const char* filename) {
 	ifstream in;
 	in.open(filename);
 
-	if (in.fail()) 	// if fails to open filename
+	if (in.fail()) { // if fails to open filename
+		cerr << "Error opneing configuration file in plugboard file: " << filename << endl;
 		code = ERROR_OPENING_CONFIGURATION_FILE;
-	else {
+	} else {
 		string input;
 		int count = 0;
 		map<string, int> plugboard_map; // store the existed plug number
@@ -29,11 +30,13 @@ void Plugboard::check_config(const char* filename) {
 				cerr << "Incorrect number of parameters in plugboard file " << filename << endl;
 				code = INCORRECT_NUMBER_OF_PLUGBOARD_PARAMETERS;
 			} else if (is_repeated_in_map(input, plugboard_map)) { // check all the conditions
+				cerr << "Impossible plugboard configuration in plugboard file " << filename << endl;
 				code = IMPOSSIBLE_PLUGBOARD_CONFIGURATION;
 			} else {
 				plugboard_map.insert(pair<string,int>(input, count));
 
 				if (!is_index_valid(input)) {
+					cerr << "Incorrect index in plugboard file " << filename << endl;
 					code = INVALID_INDEX;
 				} else if (!is_numeric(input)) {
 					cerr << "Non-numeric character in plugboard file " << filename << endl;
@@ -45,12 +48,14 @@ void Plugboard::check_config(const char* filename) {
 					} else { // get second string of each pair
 						count++;
 						if (is_repeated_in_map(input, plugboard_map)) {
+							cerr << "Impossible plugboard configuration in plugboard file " << filename << endl;
 							code = IMPOSSIBLE_PLUGBOARD_CONFIGURATION;
 						} else {
 							plugboard_map.insert(pair<string,int>(input,count));
-							if (!is_index_valid(input))
+							if (!is_index_valid(input)) {
+								cerr << "Incorrect index in plugboard file " << filename << endl;
 								code = INVALID_INDEX;
-							else if (!is_numeric(input)) {
+							} else if (!is_numeric(input)) {
 								cerr << "Non-numeric character in plugboard file " << filename << endl;
 								code = NON_NUMERIC_CHARACTER;
 							}
