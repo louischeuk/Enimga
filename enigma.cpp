@@ -41,11 +41,11 @@ void Enigma::check_config(int argc, char **argv) {
 								rotor[i]->check_config(argv[i+3]);
 								code = rotor[i]->get_code();
 
-								if (code != NO_ERROR) { // delete the rotors
-									for (int j=0; j < i; j++)
-										delete rotor[j];
-									delete [] rotor;
-								}
+								// if (code != NO_ERROR) { // delete the rotors
+								// 	for (int j=0; j < i; j++)
+								// 		delete rotor[j];
+								// 	delete [] rotor;
+								// }
 	//							cout << "rotor "<< argv[i+3] << " config ok" << endl;
 							}
 
