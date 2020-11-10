@@ -71,21 +71,19 @@ void Plugboard::check_config(const char* filename) {
 /* function that implements the plugboard configuration file */
 void Plugboard::implement_config(const char* filename) {
 	/* if passes, get a pair each time and swap with each other */
-	if (code == NO_ERROR) {
-		ifstream in_2;
-		in_2.open(filename);
+	ifstream in_2;
+	in_2.open(filename);
 
-		string input;
-		int input_number_1, input_number_2;
-		while (in_2 >> input) {
-			input_number_1 = string_to_int(input);
-			in_2 >> input;
-			input_number_2 = string_to_int(input);
-			alphabet_map[input_number_1] = input_number_2; // swap the pair
-			alphabet_map[input_number_2] = input_number_1;
-		}
-		in_2.close();
+	string input;
+	int input_number_1, input_number_2;
+	while (in_2 >> input) {
+		input_number_1 = string_to_int(input);
+		in_2 >> input;
+		input_number_2 = string_to_int(input);
+		alphabet_map[input_number_1] = input_number_2; // swap the pair
+		alphabet_map[input_number_2] = input_number_1;
 	}
+	in_2.close();
 }
 
 /* function that encrypts the letter */

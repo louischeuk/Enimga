@@ -13,11 +13,20 @@ int main(int argc, char** argv) {
     Enigma enigma(argc, argv);
     enigma.check_config(argc, argv);
 
-    if (enigma.get_code() != NO_ERROR) {
-        return enigma.get_code();
-    } else if (enigma.get_code() == NO_ERROR) {
+
+    if (enigma.get_code() == NO_ERROR) {
         enigma.implement_config(argc, argv);
+    } else {
+        return enigma.get_code();
     }
+
+    //
+    //
+    // if (enigma.get_code() != NO_ERROR) {
+    //     return enigma.get_code();
+    // } else if (enigma.get_code() == NO_ERROR) {
+    //     enigma.implement_config(argc, argv);
+    // }
 
     string letters;
     int letter_int;

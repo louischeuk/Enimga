@@ -14,9 +14,10 @@ void Reflector::check_config(const char *filename) {
 	in.open(filename);
 
 	// if fails to open filename
-	if ( in.fail() )
-		code = ERROR_OPENING_CONFIGURATION_FILE;
-	else {
+	if ( in.fail() ) {
+		cerr << "Error opening configuration file in reflector file: " << filename << endl;
+				code = ERROR_OPENING_CONFIGURATION_FILE;
+	} else {
 		string input;
 		int count = 0;
 		map<string, int> reflector_map;
@@ -77,22 +78,19 @@ void Reflector::check_config(const char *filename) {
 
 /* function that implements the reflector configuration */
 void Reflector::implement_config(const char *filename) {
+	ifstream in_2;
+	in_2.open(filename);
 
-	if (code == NO_ERROR) {
-		ifstream in_2;
-		in_2.open(filename);
-
-		string input;
-		int input_number_1, input_number_2;
-		while (in_2 >> input) {
-			input_number_1 = string_to_int(input);
-			in_2 >> input;
-			input_number_2 = string_to_int(input);
-			alphabet_map[input_number_1] = input_number_2; // swap the pair
-			alphabet_map[input_number_2] = input_number_1;
-		}
-		in_2.close();
+	string input;
+	int input_number_1, input_number_2;
+	while (in_2 >> input) {
+		input_number_1 = string_to_int(input);
+		in_2 >> input;
+		input_number_2 = string_to_int(input);
+		alphabet_map[input_number_1] = input_number_2; // swap the pair
+		alphabet_map[input_number_2] = input_number_1;
 	}
+	in_2.close();
 }
 
 /* function that encrypts the letter */
