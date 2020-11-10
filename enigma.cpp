@@ -172,17 +172,13 @@ Enigma::~Enigma() {
 	if (reflector != nullptr)
 		delete reflector;
 
-
 	if ( rotor != nullptr ) { // check if the array exists
 		for (int i=0; i < number_of_rotor; i++) { // for every rotor
-			if (rotor[i] != nullptr){
+			if (rotor[i] != nullptr) {
 				delete rotor[i];
-				cout << "rotor" << i << "deleted" << endl;
 			}
 		}
 		delete [] rotor;
-		cout << "rotor array deleted" << endl;
 	}
-
 
 }
