@@ -2,16 +2,11 @@
 using namespace std;
 
 Enigma::Enigma(int argc, char** argv) {
-
 	code = NO_ERROR;
 	plugboard = nullptr;
 	rotor = nullptr;
 	reflector = nullptr;
 	number_of_rotor = 0;
-
-	// for (int i=0 ; i < argc; i++) {
-//		cout << "Config file " << i << " is: " << argv[i] << endl;
-	// }
 }
 
 void Enigma::check_config(int argc, char **argv) {
@@ -83,8 +78,8 @@ void Enigma::implement_config(int argc, char **argv) {
 /* encrypt the letter */
 int Enigma::encrypt(const int &letter) {
 
-	if (number_of_rotor > 0) // offset of the top position of rotor
-		rotor_offset(number_of_rotor);
+	if (number_of_rotor > 0)
+		rotor_offset(number_of_rotor); // rotate the rotor
 
 	int encoded_letter = letter;
 
@@ -120,9 +115,7 @@ void Enigma::rotor_offset(int number_of_rotor) {
 			}
 		}
 	}
-
 }
-
 
 int Enigma::get_code() {
 	return code;
@@ -133,6 +126,7 @@ int Enigma::set_starting_pos(Rotor **rotor, int number_of_rotors, const char *fi
 	in.open(filename);
 
 	if (in.fail())
+		cerr << "Error opening the configuration file: " << filename << endl;
 		return ERROR_OPENING_CONFIGURATION_FILE;
 
 	string input;
@@ -146,9 +140,9 @@ int Enigma::set_starting_pos(Rotor **rotor, int number_of_rotors, const char *fi
 			return NON_NUMERIC_CHARACTER;
 		}
 		if (!is_index_valid(input))
+			cerr << "Invalid input in the file " << filename << endl;
 			return INVALID_INDEX;
 
-		// rotor[i]->top_pos = string_to_int(input);
 		rotor[i]->set_top_pos(string_to_int(input));
 	}
 	return NO_ERROR;
@@ -166,7 +160,7 @@ Enigma::~Enigma() {
 				delete rotor[i];
 			}
 		}
-		delete [] rotor;
+		delete[] rotor;
 	}
 
 }
