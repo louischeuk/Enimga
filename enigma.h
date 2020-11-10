@@ -16,14 +16,19 @@ class Enigma {
 	int code;
 public:
 	Enigma(int argc, char** argv);
+	/* checks the enigma configuration files */
 	void check_config(int argc, char **argv);
+	/* implements the enigma configuration files */
 	void implement_config(int argc, char **argv);
+	/* encrypts the letter */
 	int encrypt(const int &letter);
+	/* rotates the rotor(s) once a letter has been inputted */
 	void rotor_rotate(int number_of_rotor);
-
-	int get_code(); // setter
+	/* sets the starting position of the rotors */
 	int set_starting_pos(Rotor **rotor, int number_of_rotors, const char *filename);
-
+	/* getter function thats get the code */
+	int get_code();
+	/* destructor */
 	~Enigma();
 };
 

@@ -10,13 +10,15 @@ class Plugboard {
 	int alphabet_map[26];
 	int code; // tells whether the config is valid or not
 public:
-	// int code; // tells whether the config is valid or not
 	Plugboard(const char* filename);
+	/* checks the plugboard configuration file */
 	void check_config(const char* filename);
+	/* implements the plugboard configuration file */
 	void implement_config(const char* filename);
+	/* encrypts the letter  */
 	int encrypt(const int &letter);
-
-	int get_code(); // getter
+	/* getter fucntion that gets the code */
+	int get_code();
 };
 
 #endif

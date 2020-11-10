@@ -3,15 +3,13 @@ using namespace std;
 
 /* constructor */
 Plugboard::Plugboard(const char* filename) {
-
 	code = NO_ERROR;
-	for (int i=0; i < 26; i++)
+	for (int i=0; i < 26; i++) {
 		this->alphabet_map[i] = i;
-
-//	cout << "Plugboard with configuration file: " << filename << endl;
+	}
 }
 
-/* check configuration */
+/* fucntion that checks the plugboard configuration file */
 void Plugboard::check_config(const char* filename) {
 
 	ifstream in;
@@ -65,6 +63,7 @@ void Plugboard::check_config(const char* filename) {
 	in.close();
 }
 
+/* function that implements the plugboard configuration file */
 void Plugboard::implement_config(const char* filename) {
 	/* if passes, get a pair each time and swap with each other */
 	if (code == NO_ERROR) {
@@ -84,11 +83,12 @@ void Plugboard::implement_config(const char* filename) {
 	}
 }
 
-/* encrypt the letter(s) with the plugboard setting */
+/* function that encrypts the letter */
 int Plugboard::encrypt(const int &letter) {
 	return alphabet_map[letter];
 }
 
+/* getter function that gets the code */
 int Plugboard::get_code() {
 	return code;
 }

@@ -2,15 +2,12 @@
 
 /* constructor */
 Reflector::Reflector(const char* filename) {
-
 	code = NO_ERROR;
-
 	for (int i=0; i < 26; i++)
 		this->alphabet_map[i] = i;
-
-//	cout << "reflector initialised with config file: " << filename << endl;
 }
 
+/* function that checks the reflector configuration */
 void Reflector::check_config(const char *filename) {
 
 	ifstream in;
@@ -74,6 +71,7 @@ void Reflector::check_config(const char *filename) {
 	in.close();
 }
 
+/* function that implements the reflector configuration */
 void Reflector::implement_config(const char *filename) {
 
 	if (code == NO_ERROR) {
@@ -93,11 +91,12 @@ void Reflector::implement_config(const char *filename) {
 	}
 }
 
-/* encrypt the letter(s) with the plugboard setting */
+/* function that encrypts the letter */
 int Reflector::encrypt(const int &letter) {
 	return alphabet_map[letter];
 }
 
+/* getter function thats get the code */
 int Reflector::get_code() {
 	return code;
 }

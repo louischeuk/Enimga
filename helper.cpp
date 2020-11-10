@@ -1,13 +1,13 @@
 #include "helper.h"
 
-/* function definition that return FALSE if the file contains a number that is not between 0 and 25 */
+/* function that return FALSE if the file contains a number that is not between 0 and 25 */
 bool is_index_valid(const string &string) {
 	int number = string_to_int(string);
 	if (number < 0 || number > 25) return 0;
 	return 1;
 }
 
-/* function definition that returns TRUE if all characters in the file are numeric */
+/* function that returns TRUE if all characters in the file are numeric */
 bool is_numeric(const string &string) {
 	for (int i = 0; i < static_cast<int>(string.length()); i++) {
 		if ( !isdigit(string[i]) )
@@ -16,7 +16,7 @@ bool is_numeric(const string &string) {
 	return 1;
 }
 
-/* function definition that returns TRUE if there is repeated character in a file */
+/* function that returns TRUE if there is repeated character in a file */
 bool is_repeated_in_map(const string &key, const map<string,int> &map) {
 	if(map.count(key))
 		return 1;
@@ -34,11 +34,12 @@ bool is_repeated(const int &n, const int &number, const int map[]) {
 	return 0;
 }
 
-/* functio that returns the remainder when dividing number by 26 */
+/* function that returns the remainder when dividing number by 26 */
 int mod(const int &number) {
 	return (number + 26) % 26;
 }
 
+/* function that converts a string to an integer */
 int string_to_int(const string &string) {
     int number;
     stringstream converter(string);

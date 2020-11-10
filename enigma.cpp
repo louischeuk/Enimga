@@ -10,7 +10,7 @@ Enigma::Enigma(int argc, char** argv) {
 	number_of_rotor = 0;
 }
 
-/* function that checks the configuration of the whole engima */
+/* function that checks the enigma configuration files */
 void Enigma::check_config(int argc, char **argv) {
 	if (argc == 1) {
 		cerr << "usage: enigma plugboard-file reflector-file (<rotor-file>)* rotor-positions" << endl;
@@ -55,7 +55,7 @@ void Enigma::check_config(int argc, char **argv) {
 	}
 }
 
-/* function that implements the config */
+/* function that implements the enigma configuration files */
 void Enigma::implement_config(int argc, char **argv) {
 	if (code == NO_ERROR) {
 		plugboard->implement_config(argv[1]);
@@ -112,11 +112,6 @@ void Enigma::rotor_rotate(int number_of_rotor) {
 	}
 }
 
-/* getter function thats get the code */
-int Enigma::get_code() {
-	return code;
-}
-
 /* setter function that sets the starting position of the rotors */
 int Enigma::set_starting_pos(Rotor **rotor, int number_of_rotors, const char *filename) {
 	ifstream in;
@@ -144,6 +139,11 @@ int Enigma::set_starting_pos(Rotor **rotor, int number_of_rotors, const char *fi
 	return NO_ERROR;
 }
 
+/* getter function thats get the code */
+int Enigma::get_code() {
+	return code;
+}
+
 /* destructor */
 Enigma::~Enigma() {
 	if (plugboard != nullptr)
@@ -158,5 +158,4 @@ Enigma::~Enigma() {
 		}
 		delete[] rotor;
 	}
-
 }

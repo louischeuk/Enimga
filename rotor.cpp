@@ -11,11 +11,9 @@ Rotor::Rotor(const char* filename) {
 	for (int i=0; i < 26; i++) {
 		this->alphabet_map[i] = i;
 	}
-
-//	cout << "Rotor with configuration file " << filename << endl;
 }
 
-/* check the rotor configuration file */
+/* function that checks the rotor configuration file */
 void Rotor::check_config(const char* filename) {
 
 	ifstream in;
@@ -80,7 +78,7 @@ void Rotor::check_config(const char* filename) {
 	}
 }
 
-/* implement the configuration */
+/* function that implements the rotor configuration file */
 void Rotor::implement_config(const char* filename) {
 	ifstream in;
 	in.open(filename);
@@ -108,12 +106,12 @@ void Rotor::implement_config(const char* filename) {
 	delete[] temp_notch_pos;
 }
 
-/* conversion function from the right-hand contact to the left-hand contact of rotor */
+/* function that converts the letter from the right-hand contact config to the left-hand contact of rotor config*/
 int Rotor::w(const int &letter) {
 	return alphabet_map[letter];
 }
 
-/* conversion function from the left-hand contact to the right-hand contact of rotor */
+/* function thats converts the letter from the left-hand contact config to the right-hand contact of rotor config */
 int Rotor::w_inverse(const int &letter) {
 	for (int i=0; i < 26; i++) {
 		if (w(i) == letter)
@@ -122,7 +120,7 @@ int Rotor::w_inverse(const int &letter) {
 	return letter;
 }
 
-/* function that conversion the letter index from right-hand contact to land-hand contact of rotor */
+/* function that converts the letter index from right-hand position to land-hand position of rotor */
 int Rotor::map_r_to_l(const int &letter) {
 	int r_contact = mod(letter + top_pos);
 	int l_contact = w(r_contact);
@@ -131,7 +129,7 @@ int Rotor::map_r_to_l(const int &letter) {
 	return l_pos;
 }
 
-/* function that conversion the letter index from land-hand contact to right-hand contact of rotor */
+/* function that converts the letter index from land-hand position to right-hand position of rotor */
 int Rotor::map_l_to_r(const int &letter) {
 	int l_contact = mod(letter + top_pos);
 	int r_contact = w_inverse(l_contact);
@@ -140,27 +138,32 @@ int Rotor::map_l_to_r(const int &letter) {
 	return r_pos;
 }
 
-/* function that rotates the top position by 1 */
+/* function that rotates the rotor by one step */
 void Rotor::rotate_one_step() {
 	top_pos = mod(top_pos + 1);
 }
 
+/* getter function thats get the code */
 int Rotor::get_code() {
 	return code;
 }
 
+/* getter function that gets the top_pos */
 int Rotor::get_top_pos() {
 	return top_pos;
 }
 
+/* setter function that set the top_pos */
 void Rotor::set_top_pos(int position) {
 	top_pos = position;
 }
 
+/* getter function that gets the number_of_notch */
 int Rotor::get_number_of_notch() {
 	return number_of_notch;
 }
 
+/* getter function that gets the notch_pos */
 int Rotor::get_notch_pos(const int &iterator) {
 	return notch_pos[iterator];
 }
