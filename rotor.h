@@ -22,9 +22,9 @@ public:
 	/* implements the rotor configuration file */
 	void implement_config(const char* filename);
 	/* converts the letter from the right-hand contact config to the left-hand contact of rotor config*/
-	int w(const int &letter);
+	int wiring(const int &letter);
 	/* converts the letter from the left-hand contact config to the right-hand contact of rotor config */
-	int w_inverse(const int &letter);
+	int wiring_inverse(const int &letter);
 	/* converts the letter index from right-hand position to land-hand position of rotor */
 	int map_r_to_l(const int &letter);
 	/* converts the letter index from land-hand position to right-hand position of rotor */

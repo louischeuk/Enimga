@@ -115,14 +115,14 @@ void Rotor::implement_config(const char* filename) {
 }
 
 /* function that converts the letter from the right-hand contact config to the left-hand contact of rotor config*/
-int Rotor::w(const int &letter) {
+int Rotor::wiring(const int &letter) {
 	return alphabet_map[letter];
 }
 
 /* function thats converts the letter from the left-hand contact config to the right-hand contact of rotor config */
-int Rotor::w_inverse(const int &letter) {
+int Rotor::wiring_inverse(const int &letter) {
 	for (int i=0; i < 26; i++) {
-		if (w(i) == letter)
+		if (wiring(i) == letter)
 			return i;
 	}
 	return letter;
@@ -131,7 +131,7 @@ int Rotor::w_inverse(const int &letter) {
 /* function that converts the letter index from right-hand position to land-hand position of rotor */
 int Rotor::map_r_to_l(const int &letter) {
 	int r_contact = mod(letter + top_pos);
-	int l_contact = w(r_contact);
+	int l_contact = wiring(r_contact);
 	int l_pos = mod(l_contact - top_pos);
 
 	return l_pos;
@@ -140,7 +140,7 @@ int Rotor::map_r_to_l(const int &letter) {
 /* function that converts the letter index from land-hand position to right-hand position of rotor */
 int Rotor::map_l_to_r(const int &letter) {
 	int l_contact = mod(letter + top_pos);
-	int r_contact = w_inverse(l_contact);
+	int r_contact = wiring_inverse(l_contact);
 	int r_pos = mod(r_contact - top_pos);
 
 	return r_pos;
