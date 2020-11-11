@@ -1,5 +1,4 @@
 #include "plugboard.h"
-using namespace std;
 
 /* constructor */
 Plugboard::Plugboard(const char* filename) {

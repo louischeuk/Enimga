@@ -7,6 +7,7 @@
 #include "rotor.h"
 #include "reflector.h"
 #include "helper.h"
+using namespace std;
 
 class Enigma {
 	Plugboard *plugboard;
