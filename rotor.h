@@ -32,15 +32,15 @@ public:
 	/* function that rotates the rotor by one step */
 	void rotate_one_step();
 	/* getter function thats get the code */
-	int get_code();
+	int get_code() const;
 	/* getter function that gets the top_pos */
-	int get_top_pos();
+	int get_top_pos() const;
 	/* setter function that set the top_pos */
 	void set_top_pos(int position);
 	/* getter function that gets the number_of_notch */
-	int get_number_of_notch();
+	int get_number_of_notch() const;
 	/* getter function that gets the notch_pos */
-	int get_notch_pos(const int &iterator);
+	int get_notch_pos(const int &iterator) const;
 };
 
 #endif

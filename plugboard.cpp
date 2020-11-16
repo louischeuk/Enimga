@@ -91,6 +91,6 @@ int Plugboard::encrypt(const int &letter) {
 }
 
 /* getter function that gets the code */
-int Plugboard::get_code() {
+int Plugboard::get_code() const {
 	return code;
 }

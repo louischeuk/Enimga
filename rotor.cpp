@@ -152,12 +152,12 @@ void Rotor::rotate_one_step() {
 }
 
 /* getter function thats get the code */
-int Rotor::get_code() {
+int Rotor::get_code() const {
 	return code;
 }
 
 /* getter function that gets the top_pos */
-int Rotor::get_top_pos() {
+int Rotor::get_top_pos() const {
 	return top_pos;
 }
 
@@ -167,11 +167,11 @@ void Rotor::set_top_pos(int position) {
 }
 
 /* getter function that gets the number_of_notch */
-int Rotor::get_number_of_notch() {
+int Rotor::get_number_of_notch() const {
 	return number_of_notch;
 }
 
 /* getter function that gets the notch_pos */
-int Rotor::get_notch_pos(const int &iterator) {
+int Rotor::get_notch_pos(const int &iterator) const {
 	return notch_pos[iterator];
 }

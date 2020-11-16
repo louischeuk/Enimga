@@ -99,6 +99,6 @@ int Reflector::encrypt(const int &letter) {
 }
 
 /* getter function thats get the code */
-int Reflector::get_code() {
+int Reflector::get_code() const {
 	return code;
 }

@@ -19,7 +19,7 @@ public:
 	/* encrypts the letter  */
 	int encrypt(const int &letter);
 	/* getter fucntion that gets the code */
-	int get_code();
+	int get_code() const;
 };
 
 #endif
