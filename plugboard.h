@@ -5,7 +5,7 @@
 #include <map>
 #include "helper.h"
 #include "errors.h"
-using namespace std;
+
 
 class Plugboard {
 	int alphabet_map[26];

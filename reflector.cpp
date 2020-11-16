@@ -1,4 +1,5 @@
 #include "reflector.h"
+using namespace std;
 
 /* constructor */
 Reflector::Reflector(const char* filename) {

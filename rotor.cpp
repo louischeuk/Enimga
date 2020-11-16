@@ -1,4 +1,5 @@
 #include "rotor.h"
+using namespace std;
 
 /* constructor */
 Rotor::Rotor(const char* filename) {

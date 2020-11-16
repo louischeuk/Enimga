@@ -1,4 +1,5 @@
 #include "enigma.h"
+using namespace std;
 
 /* constructor */
 Enigma::Enigma(int argc, char** argv) {
