@@ -141,7 +141,7 @@ int Enigma::set_starting_pos(Rotor **rotor, int number_of_rotors, const char *fi
 }
 
 /* getter function thats get the code */
-int Enigma::get_code() {
+int Enigma::get_code() const {
 	return code;
 }
 

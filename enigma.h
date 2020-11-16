@@ -28,7 +28,7 @@ public:
 	/* sets the starting position of the rotors */
 	int set_starting_pos(Rotor **rotor, int number_of_rotors, const char *filename);
 	/* getter function thats get the code */
-	int get_code();
+	int get_code() const;
 	/* destructor */
 	~Enigma();
 };
