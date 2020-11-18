@@ -9,7 +9,7 @@ Plugboard::Plugboard(const char* filename) {
 	}
 }
 
-/* fucntion that checks the plugboard configuration file */
+/* function definition of check_config() */
 void Plugboard::check_config(const char* filename) {
 
 	ifstream in;
@@ -68,9 +68,8 @@ void Plugboard::check_config(const char* filename) {
 	in.close();
 }
 
-/* function that implements the plugboard configuration file */
+/* function definition of implement_config() */
 void Plugboard::implement_config(const char* filename) {
-	/* if passes, get a pair each time and swap with each other */
 	ifstream in_2;
 	in_2.open(filename);
 
@@ -86,12 +85,12 @@ void Plugboard::implement_config(const char* filename) {
 	in_2.close();
 }
 
-/* function that encrypts the letter */
+/* function defintion of encrypt() */
 int Plugboard::encrypt(const int &letter) {
 	return alphabet_map[letter];
 }
 
-/* getter function that gets the code */
+/* getter function definition of get_code() */
 int Plugboard::get_code() const {
 	return code;
 }

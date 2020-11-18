@@ -13,7 +13,7 @@ Rotor::Rotor(const char* filename) {
 	}
 }
 
-/* function that checks the rotor configuration file */
+/* function definition of check_config() */
 void Rotor::check_config(const char* filename) {
 
 	ifstream in;
@@ -24,7 +24,7 @@ void Rotor::check_config(const char* filename) {
 		code = ERROR_OPENING_CONFIGURATION_FILE;
 	} else {
 		string input;
-		map<string, int> rotor_map; // store the existed numbers
+		map<string, int> rotor_map; // store the existed letters
 
 		for (int i=0 ; (i<26) && (code == NO_ERROR) ; i++) { // check the first 26 alphabets index
 			if (!(in >> input)) {
@@ -49,7 +49,6 @@ void Rotor::check_config(const char* filename) {
 				}
 			}
 		}
-
 		if (code == NO_ERROR) {
 			int *temp_notch_pos = new int[26]; // each rotor can have maximum of 26 notches
 
@@ -82,22 +81,22 @@ void Rotor::check_config(const char* filename) {
 				}
 			}
 			number_of_notch = 0; // reset to 0 here
-			delete[] temp_notch_pos;
+			delete[] temp_notch_pos; // the temporary array will not be used after
 		}
 	}
 }
 
-/* function that implements the rotor configuration file */
+/* function definition of implement_config() */
 void Rotor::implement_config(const char* filename) {
 	ifstream in;
 	in.open(filename);
 
 	string input;
 	int input_number;
-	for (int i=0; i < 26; i++) { 	// first 26 alphabet config
+	for (int i=0; i < 26; i++) { // first 26 alphabet config
 		in >> input;
 		input_number = string_to_int(input);
-		alphabet_map[i] = input_number; // configuration is stored in righ-hand contact
+		alphabet_map[i] = input_number; // configuration is stored in righ-hand contact of the rotor
 	}
 
 	int *temp_notch_pos = new int[26]; 	// store notches in temp array
@@ -115,12 +114,12 @@ void Rotor::implement_config(const char* filename) {
 	delete[] temp_notch_pos;
 }
 
-/* function that converts the letter from the right-hand contact config to the left-hand contact of rotor config*/
+/* function definition of wiring() */
 int Rotor::wiring(const int &letter) {
 	return alphabet_map[letter];
 }
 
-/* function thats converts the letter from the left-hand contact config to the right-hand contact of rotor config */
+/* function definition of wiring_inverse() */
 int Rotor::wiring_inverse(const int &letter) {
 	for (int i=0; i < 26; i++) {
 		if (wiring(i) == letter)
@@ -129,7 +128,7 @@ int Rotor::wiring_inverse(const int &letter) {
 	return letter;
 }
 
-/* function that converts the letter index from right-hand position to land-hand position of rotor */
+/* function definiton of map_r_to_l() */
 int Rotor::map_r_to_l(const int &letter) {
 	int r_contact = mod(letter + top_pos);
 	int l_contact = wiring(r_contact);
@@ -138,7 +137,7 @@ int Rotor::map_r_to_l(const int &letter) {
 	return l_pos;
 }
 
-/* function that converts the letter index from land-hand position to right-hand position of rotor */
+/* function definiton of map_l_to_r() */
 int Rotor::map_l_to_r(const int &letter) {
 	int l_contact = mod(letter + top_pos);
 	int r_contact = wiring_inverse(l_contact);
@@ -147,32 +146,32 @@ int Rotor::map_l_to_r(const int &letter) {
 	return r_pos;
 }
 
-/* function that rotates the rotor by one step */
+/* function definiton of rotate_one_step() */
 void Rotor::rotate_one_step() {
 	top_pos = mod(top_pos + 1);
 }
 
-/* getter function thats get the code */
+/* getter function definition of get_code() */
 int Rotor::get_code() const {
 	return code;
 }
 
-/* getter function that gets the top_pos */
+/* getter function defintiion of get_top_pos() */
 int Rotor::get_top_pos() const {
 	return top_pos;
 }
 
-/* setter function that set the top_pos */
+/* setter function definition of set_top_pos() */
 void Rotor::set_top_pos(int position) {
 	top_pos = position;
 }
 
-/* getter function that gets the number_of_notch */
+/* getter function defintiion of get_number_of_notch() */
 int Rotor::get_number_of_notch() const {
 	return number_of_notch;
 }
 
-/* getter function that gets the notch_pos */
+/* getter function defintiion of get_notch_pos() */
 int Rotor::get_notch_pos(const int &iterator) const {
 	return notch_pos[iterator];
 }

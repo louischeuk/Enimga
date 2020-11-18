@@ -8,14 +8,13 @@ Reflector::Reflector(const char* filename) {
 		this->alphabet_map[i] = i;
 }
 
-/* function that checks the reflector configuration */
+/* function definition of check_config() */
 void Reflector::check_config(const char *filename) {
 
 	ifstream in;
 	in.open(filename);
 
-	// if fails to open filename
-	if ( in.fail() ) {
+	if ( in.fail() ) { 	// if fails to open filename
 		cerr << "Error opening configuration file in reflector file: " << filename << endl;
 				code = ERROR_OPENING_CONFIGURATION_FILE;
 	} else {
@@ -34,8 +33,7 @@ void Reflector::check_config(const char *filename) {
 				cerr << "Invalid reflector mapping in reflector file " << filename << endl;
 				code = INVALID_REFLECTOR_MAPPING;
 			} else {
-				// put every string into the map
-				reflector_map.insert(pair<string,int>(input, count));
+				reflector_map.insert(pair<string,int>(input, count)); // put every string into the map
 
 				if (!is_index_valid(input)) {
 					cerr << "Invalid index in reflector file " << filename << endl;
@@ -68,7 +66,7 @@ void Reflector::check_config(const char *filename) {
 			}
 		}
 		if (code == NO_ERROR) {
-			if ((count < 26)) {
+			if ((count < 26)) { // reflector has to have exactly 26 alphabets
 				cerr << "Insufficient number of mappings in reflector file: " << filename << endl;
 				code = INCORRECT_NUMBER_OF_REFLECTOR_PARAMETERS;
 			}
@@ -77,7 +75,7 @@ void Reflector::check_config(const char *filename) {
 	in.close();
 }
 
-/* function that implements the reflector configuration */
+/* function defintion of implement_config() */
 void Reflector::implement_config(const char *filename) {
 	ifstream in_2;
 	in_2.open(filename);
@@ -94,12 +92,12 @@ void Reflector::implement_config(const char *filename) {
 	in_2.close();
 }
 
-/* function that encrypts the letter */
+/* function definition of encrypt() */
 int Reflector::encrypt(const int &letter) {
 	return alphabet_map[letter];
 }
 
-/* getter function thats get the code */
+/* getter function definition of get_code() */
 int Reflector::get_code() const {
 	return code;
 }

@@ -13,18 +13,19 @@ class Enigma {
 	Rotor **rotor;
 	Reflector *reflector;
 	int number_of_rotor; // number of rotors
-	int code;
+	int code; // error code
 public:
+	/* constructor */
 	Enigma(int argc, char** argv);
-	/* checks the enigma configuration files */
+	/* function that checks the enigma configuration files */
 	void check_config(int argc, char **argv);
-	/* implements the enigma configuration files */
+	/* fucntion that implements the all configuration files to the enigma*/
 	void implement_config(int argc, char **argv);
-	/* encrypts the letter */
+	/* function that encrypts the letter when it pass through the enigma */
 	int encrypt(const int &letter);
-	/* rotates the rotor(s) once a letter has been inputted */
+	/* function that rotates the rotor(s) once input a letter */
 	void rotor_rotate(int number_of_rotor);
-	/* sets the starting position of the rotors */
+	/* function that sets the starting position(s) of the rotor(s) */
 	int set_starting_pos(Rotor **rotor, int number_of_rotors, const char *filename);
 	/* getter function thats get the code */
 	int get_code() const;

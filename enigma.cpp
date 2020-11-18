@@ -10,7 +10,7 @@ Enigma::Enigma(int argc, char** argv) {
 	number_of_rotor = 0;
 }
 
-/* function that checks the enigma configuration files */
+/* function definition of check_config() */
 void Enigma::check_config(int argc, char **argv) {
 	if (argc == 1) {
 		cerr << "usage: enigma plugboard-file reflector-file (<rotor-file>)* rotor-positions" << endl;
@@ -35,7 +35,7 @@ void Enigma::check_config(int argc, char **argv) {
 						code = INSUFFICIENT_NUMBER_OF_PARAMETERS;
 					} else if (argc >= 4) {
 						if (argc > 4 ) {
-							rotor = new Rotor *[argc - 4]; // an array of rotors
+							rotor = new Rotor *[argc - 4]; // an array that contains the rotor(s)
 							number_of_rotor = argc - 4;
 
 							for (int i=0; i < (argc - 4) && (code == NO_ERROR); i++) {
@@ -55,7 +55,7 @@ void Enigma::check_config(int argc, char **argv) {
 	}
 }
 
-/* function that implements the enigma configuration files */
+/* function definition of implement_config() */
 void Enigma::implement_config(int argc, char **argv) {
 	if (code == NO_ERROR) {
 		plugboard->implement_config(argv[1]);
@@ -69,7 +69,7 @@ void Enigma::implement_config(int argc, char **argv) {
 	}
 }
 
-/* function that encrypts the letter */
+/* function definition of encrypt() */
 int Enigma::encrypt(const int &letter) {
 
 	if (number_of_rotor > 0)
@@ -98,7 +98,7 @@ int Enigma::encrypt(const int &letter) {
 	return encoded_letter;
 }
 
-/* function that rotates the rotor(s) once a letter has been inputted */
+/* function definition of rotor_rotate() */
 void Enigma::rotor_rotate(int number_of_rotor) {
 
 	if (number_of_rotor > 0) { // base case
@@ -112,7 +112,7 @@ void Enigma::rotor_rotate(int number_of_rotor) {
 	}
 }
 
-/* setter function that sets the starting position of the rotors */
+/* setter function definition of set_top_pos() */
 int Enigma::set_starting_pos(Rotor **rotor, int number_of_rotors, const char *filename) {
 	ifstream in;
 	in.open(filename);
@@ -141,7 +141,7 @@ int Enigma::set_starting_pos(Rotor **rotor, int number_of_rotors, const char *fi
 	return NO_ERROR;
 }
 
-/* getter function thats get the code */
+/* getter function defintion of get_code() */
 int Enigma::get_code() const {
 	return code;
 }
