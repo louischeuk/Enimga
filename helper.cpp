@@ -1,13 +1,13 @@
 #include "helper.h"
 
-/* function that return FALSE if the file contains a number that is not between 0 and 25 */
+/* function definition of is_index_valid() */
 bool is_index_valid(const string &string) {
 	int number = string_to_int(string);
 	if (number < 0 || number > 25) return 0;
 	return 1;
 }
 
-/* function that returns TRUE if all characters in the file are numeric */
+/* function definition of is_numeric() */
 bool is_numeric(const string &string) {
 	for (int i = 0; i < static_cast<int>(string.length()); i++) {
 		if ( !isdigit(string[i]) )
@@ -16,14 +16,14 @@ bool is_numeric(const string &string) {
 	return 1;
 }
 
-/* function that returns TRUE if there is repeated character in a file */
+/* function definition of is_repeated_in_map() */
 bool is_repeated_in_map(const string &key, const map<string,int> &map) {
 	if(map.count(key))
 		return 1;
 	return 0;
 }
 
-/* function that returns TRUE if there is repeated character in an array */
+/* function definition of is_repeated() */
 bool is_repeated(const int &n, const int &number, const int map[]) {
 	// if (n <= 0) return 0; // skip the first one
 
@@ -34,12 +34,12 @@ bool is_repeated(const int &n, const int &number, const int map[]) {
 	return 0;
 }
 
-/* function that returns the remainder when dividing number by 26 */
+/* function definition of mod() */
 int mod(const int &number) {
 	return (number + 26) % 26;
 }
 
-/* function that converts a string to an integer */
+/* function definion of string_to_int() */
 int string_to_int(const string &string) {
     int number;
     stringstream converter(string);
