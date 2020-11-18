@@ -19,8 +19,8 @@ void Enigma::check_config(int argc, char **argv) {
 		plugboard = new Plugboard(argv[1]);
 		plugboard->check_config(argv[1]);
 		code = plugboard->get_code();
-		if (code == NO_ERROR) {
 
+		if (code == NO_ERROR) {
 			if (argc == 2) {
 				cerr << "usage: enigma plugboard-file reflector-file (<rotor-file>)* rotor-positions" << endl;
 				code = INSUFFICIENT_NUMBER_OF_PARAMETERS;
@@ -28,8 +28,8 @@ void Enigma::check_config(int argc, char **argv) {
 				reflector = new Reflector(argv[2]);
 				reflector->check_config(argv[2]);
 				code = reflector->get_code();
-				if (code == NO_ERROR) {
 
+				if (code == NO_ERROR) {
 					if (argc == 3) {
 						cerr << "usage: enigma plugboard-file reflector-file (<rotor-file>)* rotor-positions" << endl;
 						code = INSUFFICIENT_NUMBER_OF_PARAMETERS;
@@ -43,7 +43,6 @@ void Enigma::check_config(int argc, char **argv) {
 								rotor[i]->check_config(argv[i+3]);
 								code = rotor[i]->get_code();
 							}
-
 							if (code == NO_ERROR) {
 								code = set_starting_pos(rotor, number_of_rotor, argv[argc - 1]);
 							}
