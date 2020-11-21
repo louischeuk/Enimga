@@ -6,7 +6,7 @@ Rotor::Rotor(const char* filename) {
 	code = NO_ERROR;
 	number_of_notch = 0;
 	top_pos = 0;
-	notch_pos = NULL;
+	notch_pos = nullptr;
 
 	for (int i=0; i < 26; i++) {
 		this->alphabet_map[i] = i;
@@ -178,5 +178,7 @@ int Rotor::get_notch_pos(const int &iterator) const {
 
 /* function defintiion of destructor */
 Rotor::~Rotor() {
-	delete notch_pos;
+	if (notch_pos != nullptr) {
+		delete notch_pos;
+	}
 }
