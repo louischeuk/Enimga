@@ -34,7 +34,7 @@ void Enigma::check_config(int argc, char **argv) {
 						cerr << "usage: enigma plugboard-file reflector-file (<rotor-file>)* rotor-positions" << endl;
 						code = INSUFFICIENT_NUMBER_OF_PARAMETERS;
 					} else if (argc >= 4) {
-						if (argc > 4 ) {
+						if (argc > 4 ) { // if argc == 4, it means no rotor exists
 							rotor = new Rotor *[argc - 4]; // an array that contains the rotor(s)
 							number_of_rotor = argc - 4;
 
@@ -147,10 +147,12 @@ int Enigma::get_code() const {
 
 /* destructor */
 Enigma::~Enigma() {
-	if (plugboard != nullptr)
+	if (plugboard != nullptr) {
 		delete plugboard;
-	if (reflector != nullptr)
+	}
+	if (reflector != nullptr) {
 		delete reflector;
+	}
 	if ( rotor != nullptr ) { // check if the array exists
 		for (int i=0; i < number_of_rotor; i++) { // for every rotor
 			if (rotor[i] != nullptr) {
