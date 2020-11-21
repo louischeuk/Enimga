@@ -41,6 +41,8 @@ public:
 	int get_number_of_notch() const;
 	/* getter function that gets the notch_pos */
 	int get_notch_pos(const int &iterator) const;
+	/* destructor */
+	~Rotor();
 };
 
 #endif

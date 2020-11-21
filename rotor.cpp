@@ -81,7 +81,7 @@ void Rotor::check_config(const char* filename) {
 				}
 			}
 			number_of_notch = 0; // reset to 0 here
-			delete[] temp_notch_pos; // the temporary array will not be used after
+			delete[] temp_notch_pos;
 		}
 	}
 }
@@ -174,4 +174,9 @@ int Rotor::get_number_of_notch() const {
 /* getter function defintiion of get_notch_pos() */
 int Rotor::get_notch_pos(const int &iterator) const {
 	return notch_pos[iterator];
+}
+
+/* function defintiion of destructor */
+Rotor::~Rotor() {
+	delete notch_pos;
 }
