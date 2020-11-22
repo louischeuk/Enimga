@@ -179,6 +179,6 @@ int Rotor::get_notch_pos(const int &iterator) const {
 /* function defintiion of destructor */
 Rotor::~Rotor() {
 	if (notch_pos != nullptr) {
-		delete notch_pos;
+		delete[] notch_pos;
 	}
 }
